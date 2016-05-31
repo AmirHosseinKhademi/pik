@@ -20,4 +20,5 @@ from theme import urls
 urlpatterns = [
     url(r'^user/', include(urls)),
     url(r'^admin/', admin.site.urls),
+    url(r'^purchases/', include('purchase.urls', namespace='purchase'))
 ]

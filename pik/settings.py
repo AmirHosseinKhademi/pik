@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'theme'
-    'purchase.app.PurchaseConfig'
+    #'theme'
+    'purchase.apps.PurchaseConfig'
 ]
 
 MIDDLEWARE_CLASSES = [
