@@ -1,132 +1,120 @@
-<!doctype html>
-<html lang="fa">
-<head>
+{% extends 'base.html' %} {% load static %}
+{% block title %}پروفایل شما | سامانه پیک{% endblock %}
+{% block balance %}12500{% endblock %}
+{% block page_header %}{{ user }}{% endblock %}
+{% block content %}
+    <!-- Whole Page Section -->
+    <div id="container" class="container">
 
 
-<!-- Basic Page Metatags -->
-<title>پیک ! سامانه مدیریت خرید گروهی | ساخت گروه</title>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="description" content="سامانه پیک جهت سهولت در خریدهای گروهی و پرداخت های دسته جمعی ایجاد شده است و بهترین ابزار برای مدیریت هرچه بهتر خریدها در سفر و خابگاه میباشد" />
-<meta name="keywords" content="سامانه پیک,مدیریت مخارج گروهی,مدیریت مخارج خابگاه,مادر خرج,سایت مدیریت مخارج دسته جمعی" />
-<meta name="author" content="بنا به قوانین مسابقه ذکر نشد" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> <!-- Respomsive Design -->
-<!-- End Basic Page Metatags -->
+        <!-- Header -->
+        {#        <div class="pagetitle">#}
+        {#            <div class="col-md-6">#}
+        {#                <a href="index.html"><img src="{% static 'images/header.png' %}" alt="لوگوی وب سایت پیک"></a>#}
+        {#            </div>#}
+        {#            <div class="col-md-6">#}
+        {#                <div class="tp-balance">#}
+        {#                    موجودی حساب شما#}
+        {#                    <span id="account-balance">27500</span>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+        <!-- End Header -->
 
 
-<!-- Import CSS Files -->	  
-<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="screen"> <!-- Used for Respomsive Design -->
-<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">	<!-- Main Stylesheet -->  
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="screen"> <!-- Font Icons -->  
-<!-- End Import CSS Files -->
-
-</head>
-<body>
-
-<!-- Whole Page Section -->
-<div id="container" class="container">
-
-
-<!-- Header -->
-<div class="pagetitle">
-<div class="col-md-6">
-<a href="index.html"><img src="images/header.png" alt="لوگوی وب سایت پیک"></a>
-</div>
-<div class="col-md-6">
-<div class="tp-balance">
-موجودی حساب شما
-<span id="account-balance">27500</span> 
-</div>
-</div>
-</div>
-<!-- End Header -->
-
-
-<!-- Main Section -->	 
-<div id="content" class="box-section">
-<!-- Define a Row -->
-<div class="row">
-<!-- Menu -->
-<div class="col-md-3">
-<div class="tp-menu">
-<ul>
-<li><a href="Purchases.html"><i class="fa fa-shopping-cart"></i>خرید ها</a></li>						
-<li><a href="AddPurchase.html"><i class="fa fa-cart-plus"></i>اضافه کردن خرید</a></li>
-<li><a href="PurchaseHistory.html"><i class="fa fa-history"></i>تاریخچه خرید</a></li>
-<li><a href="Groups.html"><i class="fa fa-users"></i>گروه ها</a></li>
-<li><a class="active" href="CreateGroup.html"><i class="fa fa-plus-square"></i>ساخت گروه</a></li>
-<li><a href="Profile.html"><i class="fa fa-user"></i>پروفایل</a></li>
-<li><a href="AccountBalance.html"><i class="fa fa-money"></i>شارژ و تسویه</a></li>						   
-</ul>
-</div>
-</div>
-<!-- End Menu -->
+        <!-- Main Section -->
+        <div id="content" class="box-section">
+            <!-- Define a Row -->
+            <div class="row">
+                <!-- Menu -->
+                {#                <div class="col-md-3">#}
+                {#                    <div class="tp-menu">#}
+                {#                        <ul>#}
+                {#                            <li><a href="Purchases.html"><i class="fa fa-shopping-cart"></i>خرید ها</a></li>#}
+                {#                            <li><a href="AddPurchase.html"><i class="fa fa-cart-plus"></i>اضافه کردن خرید</a></li>#}
+                {#                            <li><a href="PurchaseHistory.html"><i class="fa fa-history"></i>تاریخچه خرید</a></li>#}
+                {#                            <li><a href="Groups.html"><i class="fa fa-users"></i>گروه ها</a></li>#}
+                {#                            <li><a class="active" href="CreateGroup.html"><i class="fa fa-plus-square"></i>ساخت گروه</a></li>#}
+                {#                            <li><a href="Profile.html"><i class="fa fa-user"></i>پروفایل</a></li>#}
+                {#                            <li><a href="AccountBalance.html"><i class="fa fa-money"></i>شارژ و تسویه</a></li>#}
+                {#                        </ul>#}
+                {#                    </div>#}
+                {#                </div>#}
+                <!-- End Menu -->
 
 
 
-<!-- Create Group Main Area -->
-<div class="col-md-9">
-<h2>ساخت گروه</h2>
-<p>
-برای گروه خود نامی انتخاب کنید ، سپس از طریق فیلد بعدی ، نام کاربری کسانی که مایل هستید در گروه شما عضو باشند وارد نمایید ، با شروع وارد نمودن نام کاربری ، لیست افرادی که آن نام کاربری را دارند برای شما نمایش داده میشود که میتوانید انتخاب نمایید .
-<br>
-برای استفاده از این سامانه ، تمامی اعضا میبایست عضو سایت باشند ، با اضافه کردن اعضا به گروه ، برای آنها دعوتنامه ای از طریق ایمیل ارسال میگردد .
-</p>
-<!-- Create Group Form -->
-<form id="form" action="#" method="POST">
-<div id="msg" class="message"></div>
-<div class="text-fields">
-<div class="float-input">
-<input name="name" id="name" type="text" placeholder="نام گروه">
-<span><i class="fa fa-user"></i></span>
-</div>
-<div class="float-input">
-<input name="member" id="member" type="text" placeholder="نام کاربری پیک کاربر مورد نظر را وارد نمایید">
-<span><i class="fa fa-user"></i></span>
-</div>
-<div class="tp-added-members">
-کاربران اضافه شده به گروه : <br/>
-<span class="tp-member" id="Member01"><i class="fa fa-times-circle" onclick="hideMember01();"></i> محسن</span>
-<span class="tp-member" id="Member02"><i class="fa fa-times-circle" onclick="hideMember02();"></i> فرزاد</span>
-<span class="tp-member" id="Member03"><i class="fa fa-times-circle" onclick="hideMember03();"></i> امین</span>
-<span class="tp-member" id="Member04"><i class="fa fa-times-circle" onclick="hideMember04();"></i> مصطفی</span>
-</div>
-<div class="submit-area">
-<button type="submit" name="creategruoup" id="submit_creategruoup" onclick="createGruoupMessage();">
-ساخت گروه
-</button>
-</div>
-</div>
-</form>
-<!-- End Create Group Form -->
-
-</div>
-<!-- End Create Group Main Area -->
-
-</div>
-<!-- End Define a Row -->
+                <!-- Create Group Main Area -->
+                <div class="col-md-9">
+                    <h2>ساخت گروه</h2>
+                    <p>
+                        برای گروه خود نامی انتخاب کنید ، سپس از طریق فیلد بعدی ، نام کاربری کسانی که مایل هستید در گروه شما عضو باشند وارد نمایید ، با شروع وارد نمودن نام کاربری ، لیست افرادی که آن نام کاربری را دارند برای شما نمایش داده میشود که میتوانید انتخاب نمایید .
+                        <br>
+                        برای استفاده از این سامانه ، تمامی اعضا میبایست عضو سایت باشند ، با اضافه کردن اعضا به گروه ، برای آنها دعوتنامه ای از طریق ایمیل ارسال میگردد .
+                    </p>
+                    <!-- Create Group Form -->
+                    <form id="form" action="" method="POST">
+                    {% csrf_token %}
+                        <div id="msg" class="message"></div>
+                        <div class="text-fields">
+                            {% for item in create_form %}
+                                <div class="float-input ">
+                                    {{ item }}
+                                    <span><i class="fa fa-user"></i></span>
+                                </div>
+                            {% endfor %}
 
 
-<!-- Footer -->
-<div class="tp-footer">
-<p>
-2015 &copy; کلیه حقوق مادی و معنوی این وب سایت برای دبیرخانه دومین دوره مسابقات مهارت سنجی فناورد محفوظ است .
-</p>
-</div>
-<!-- End Footer -->
+                            {#                            <div class="float-input">#}
+                            {#                                <input name="name" id="name" type="text" placeholder="نام گروه">#}
+                            {#                                <span><i class="fa fa-user"></i></span>#}
+                            {#                            </div>#}
+                            {#                            <div class="float-input">#}
+                            {#                                <input name="member" id="member" type="text" placeholder="نام کاربری پیک کاربر مورد نظر را وارد نمایید">#}
+                            {#                                <span><i class="fa fa-user"></i></span>#}
+                            {#                            </div>#}
+                            <div class="tp-added-members">
+                                کاربران اضافه شده به گروه : <br/>
+                                <span class="tp-member" id="Member01"><i class="fa fa-times-circle" onclick="hideMember01();"></i> محسن</span>
+                                <span class="tp-member" id="Member02"><i class="fa fa-times-circle" onclick="hideMember02();"></i> فرزاد</span>
+                                <span class="tp-member" id="Member03"><i class="fa fa-times-circle" onclick="hideMember03();"></i> امین</span>
+                                <span class="tp-member" id="Member04"><i class="fa fa-times-circle" onclick="hideMember04();"></i> مصطفی</span>
+                            </div>
+                            <div class="submit-area">
+{#                                <button type="submit" name="creategruoup" id="submit_creategruoup" onclick="createGruoupMessage();">#}
+                                <button type="submit" name="creategroup" id="submit" >
+                                    ساخت گروه
+                                </button>
+                            </div>
+                            </div>
+                    </form>
+                    <!-- End Create Group Form -->
 
-</div>
-<!-- End Main Section -->
+                </div>
+                <!-- End Create Group Main Area -->
 
-</div>
-<!-- End Whole Page Section -->
-
-
-<!-- Import JS Files -->
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<!-- Import JS Files -->
+            </div>
+            <!-- End Define a Row -->
 
 
-</body>
-</html>
+            {#            <!-- Footer -->#}
+            {#            <div class="tp-footer">#}
+            {#                <p>#}
+            {#                    2015 &copy; کلیه حقوق مادی و معنوی این وب سایت برای دبیرخانه دومین دوره مسابقات مهارت سنجی فناورد محفوظ است .#}
+            {#                </p>#}
+            {#            </div>#}
+            {#            <!-- End Footer -->#}
+
+        </div>
+        <!-- End Main Section -->
+
+    </div>
+    <!-- End Whole Page Section -->
+
+
+    <!-- Import JS Files -->
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    <!-- Import JS Files -->
+
+{% endblock %}
