@@ -14,3 +14,4 @@ tests/report/
 .project
 .pydevproject
 .idea/
+*.sqlite3
