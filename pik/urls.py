@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from theme import urls
+from theme import urls as theme_url
+from groupApp import urls as group_url
 
 urlpatterns = [
-    url(r'^user/', include(urls)),
+    url(r'^user/', include(theme_url)),
     url(r'^admin/', admin.site.urls),
+    url(r'^group/', include(group_url)),
 ]
