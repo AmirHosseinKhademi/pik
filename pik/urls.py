@@ -17,9 +17,13 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from theme import urls as theme_url
 from groupApp import urls as group_url
+from UserApp import urls as user_url
 
 urlpatterns = [
     url(r'^user/', include(theme_url)),
     url(r'^admin/', admin.site.urls),
     url(r'^group/', include(group_url)),
+    url(r'^users/', include(user_url)),
+    url(r'^$', 'UserApp.views.index', name='index')
+
 ]
