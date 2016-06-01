@@ -3,5 +3,5 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    url(r'^profile/', views.profile_view ),
+    url(r'^profile', views.profile_view ),
 ]
