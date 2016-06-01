@@ -1,120 +1,63 @@
 {% extends 'base.html' %} {% load static %}
-{% block title %}پروفایل شما | سامانه پیک{% endblock %}
+{% block title %}ساخت گروه | سامانه پیک{% endblock %}
 {% block balance %}12500{% endblock %}
-{% block page_header %}{{ user }}{% endblock %}
+{% block page_header %}ساخت گروه{% endblock %}
 {% block content %}
-    <!-- Whole Page Section -->
-    <div id="container" class="container">
-
-
-        <!-- Header -->
-        {#        <div class="pagetitle">#}
-        {#            <div class="col-md-6">#}
-        {#                <a href="index.html"><img src="{% static 'images/header.png' %}" alt="لوگوی وب سایت پیک"></a>#}
-        {#            </div>#}
-        {#            <div class="col-md-6">#}
-        {#                <div class="tp-balance">#}
-        {#                    موجودی حساب شما#}
-        {#                    <span id="account-balance">27500</span>#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
-        <!-- End Header -->
-
-
-        <!-- Main Section -->
-        <div id="content" class="box-section">
-            <!-- Define a Row -->
-            <div class="row">
-                <!-- Menu -->
-                {#                <div class="col-md-3">#}
-                {#                    <div class="tp-menu">#}
-                {#                        <ul>#}
-                {#                            <li><a href="Purchases.html"><i class="fa fa-shopping-cart"></i>خرید ها</a></li>#}
-                {#                            <li><a href="AddPurchase.html"><i class="fa fa-cart-plus"></i>اضافه کردن خرید</a></li>#}
-                {#                            <li><a href="PurchaseHistory.html"><i class="fa fa-history"></i>تاریخچه خرید</a></li>#}
-                {#                            <li><a href="Groups.html"><i class="fa fa-users"></i>گروه ها</a></li>#}
-                {#                            <li><a class="active" href="CreateGroup.html"><i class="fa fa-plus-square"></i>ساخت گروه</a></li>#}
-                {#                            <li><a href="Profile.html"><i class="fa fa-user"></i>پروفایل</a></li>#}
-                {#                            <li><a href="AccountBalance.html"><i class="fa fa-money"></i>شارژ و تسویه</a></li>#}
-                {#                        </ul>#}
-                {#                    </div>#}
-                {#                </div>#}
-                <!-- End Menu -->
-
-
-
-                <!-- Create Group Main Area -->
-                <div class="col-md-9">
-                    <h2>ساخت گروه</h2>
-                    <p>
-                        برای گروه خود نامی انتخاب کنید ، سپس از طریق فیلد بعدی ، نام کاربری کسانی که مایل هستید در گروه شما عضو باشند وارد نمایید ، با شروع وارد نمودن نام کاربری ، لیست افرادی که آن نام کاربری را دارند برای شما نمایش داده میشود که میتوانید انتخاب نمایید .
-                        <br>
-                        برای استفاده از این سامانه ، تمامی اعضا میبایست عضو سایت باشند ، با اضافه کردن اعضا به گروه ، برای آنها دعوتنامه ای از طریق ایمیل ارسال میگردد .
-                    </p>
-                    <!-- Create Group Form -->
-                    <form id="form" action="" method="POST">
-                    {% csrf_token %}
-                        <div id="msg" class="message"></div>
-                        <div class="text-fields">
-                            {% for item in create_form %}
-                                <div class="float-input ">
-                                    {{ item }}
-                                    <span><i class="fa fa-user"></i></span>
-                                </div>
-                            {% endfor %}
-
-
-                            {#                            <div class="float-input">#}
-                            {#                                <input name="name" id="name" type="text" placeholder="نام گروه">#}
-                            {#                                <span><i class="fa fa-user"></i></span>#}
-                            {#                            </div>#}
-                            {#                            <div class="float-input">#}
-                            {#                                <input name="member" id="member" type="text" placeholder="نام کاربری پیک کاربر مورد نظر را وارد نمایید">#}
-                            {#                                <span><i class="fa fa-user"></i></span>#}
-                            {#                            </div>#}
-                            <div class="tp-added-members">
-                                کاربران اضافه شده به گروه : <br/>
-                                <span class="tp-member" id="Member01"><i class="fa fa-times-circle" onclick="hideMember01();"></i> محسن</span>
-                                <span class="tp-member" id="Member02"><i class="fa fa-times-circle" onclick="hideMember02();"></i> فرزاد</span>
-                                <span class="tp-member" id="Member03"><i class="fa fa-times-circle" onclick="hideMember03();"></i> امین</span>
-                                <span class="tp-member" id="Member04"><i class="fa fa-times-circle" onclick="hideMember04();"></i> مصطفی</span>
-                            </div>
-                            <div class="submit-area">
-{#                                <button type="submit" name="creategruoup" id="submit_creategruoup" onclick="createGruoupMessage();">#}
-                                <button type="submit" name="creategroup" id="submit" >
-                                    ساخت گروه
-                                </button>
-                            </div>
-                            </div>
-                    </form>
-                    <!-- End Create Group Form -->
-
-                </div>
-                <!-- End Create Group Main Area -->
-
-            </div>
-            <!-- End Define a Row -->
-
-
-            {#            <!-- Footer -->#}
-            {#            <div class="tp-footer">#}
-            {#                <p>#}
-            {#                    2015 &copy; کلیه حقوق مادی و معنوی این وب سایت برای دبیرخانه دومین دوره مسابقات مهارت سنجی فناورد محفوظ است .#}
-            {#                </p>#}
+    <!-- Create Group Main Area -->
+    <p>
+        برای گروه خود نامی انتخاب کنید ، سپس از طریق فیلد بعدی ، نام کاربری کسانی که مایل هستید در گروه شما عضو باشند وارد نمایید ، با شروع وارد نمودن نام کاربری ، لیست افرادی که آن نام کاربری را دارند برای شما نمایش داده میشود که میتوانید انتخاب نمایید .
+        <br>
+        برای استفاده از این سامانه ، تمامی اعضا میبایست عضو سایت باشند ، با اضافه کردن اعضا به گروه ، برای آنها دعوتنامه ای از طریق ایمیل ارسال میگردد .
+    </p>
+    <!-- Create Group Form -->
+{#    <form id="form" action="" method="POST">#}
+{#        {% csrf_token %}#}
+{#        <div id="msg" class="message"></div>#}
+{#        <div class="text-fields">#}
+{#            {% for item in create_form %}#}
+{#                <div class="float-input ">#}
+{#                    {{ item }}#}
+{#                    <span><i class="fa fa-user"></i></span>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{##}
+            {#            <div class="tp-added-members">#}
             {#            </div>#}
-            {#            <!-- End Footer -->#}
+{#            <div class="submit-area">#}
+                {#                <button type="submit" name="creategruoup" id="submit_creategruoup" onclick="createGruoupMessage();">#}
+                {#                </button>#}
+{#                <button type="submit" >#}
+{#                    ساخت گروه#}
+{#                </button>#}
+{#            </div>#}
+{#        </div>#}
+{#    </form>#}
 
+    <form action="" method="post">
+    {% csrf_token %}
+        <div id="msg" class="message"></div>
+        <div class="text-fields">
+            {% for item in create_form %}
+                <div class="float-input ">
+                    {{ item }}
+                    <span><i class="fa fa-user"></i></span>
+                </div>
+            {% endfor %}
+
+            {#            <div class="tp-added-members">#}
+            {#            </div>#}
+            <div class="submit-area">
+                {#                <button type="submit" name="creategruoup" id="submit_creategruoup" onclick="createGruoupMessage();">#}
+                {#                </button>#}
+                <button type="submit" >
+                    ساخت گروه
+                </button>
+            </div>
         </div>
-        <!-- End Main Section -->
+    </form>
+    <script type="text/javascript" src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+    {{ create_form.media }}
+    <!-- End Create Group Form -->
 
-    </div>
-    <!-- End Whole Page Section -->
-
-
-    <!-- Import JS Files -->
-    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
-    <!-- Import JS Files -->
-
+    <!-- End Create Group Main Area -->
 {% endblock %}

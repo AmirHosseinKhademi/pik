@@ -9,6 +9,9 @@ class Group(models.Model):
     def __str__(self):
         return self.title
 
+    def set_admin(self, user):
+
+
 
 class UserGroup(models.Model):
     group = models.ForeignKey(Group)

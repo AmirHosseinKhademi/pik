@@ -1,23 +1,26 @@
+{% load static %}
 <!doctype html>
 <html lang="fa">
 <head>
 
 
-<!-- Basic Page Metatags -->
-<title>پیک ! سامانه مدیریت خرید گروهی</title>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="description" content="سامانه پیک جهت سهولت در خریدهای گروهی و پرداخت های دسته جمعی ایجاد شده است و بهترین ابزار برای مدیریت هرچه بهتر خریدها در سفر و خابگاه میباشد" />
-<meta name="keywords" content="سامانه پیک,مدیریت مخارج گروهی,مدیریت مخارج خابگاه,مادر خرج,سایت مدیریت مخارج دسته جمعی" />
-<meta name="author" content="بنا به قوانین مسابقه ذکر نشد" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> <!-- Respomsive Design -->
-<!-- End Basic Page Metatags -->
+    <!-- Basic Page Metatags -->
+    <title>پیک ! سامانه مدیریت خرید گروهی</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="description"
+          content="سامانه پیک جهت سهولت در خریدهای گروهی و پرداخت های دسته جمعی ایجاد شده است و بهترین ابزار برای مدیریت هرچه بهتر خریدها در سفر و خابگاه میباشد"/>
+    <meta name="keywords"
+          content="سامانه پیک,مدیریت مخارج گروهی,مدیریت مخارج خابگاه,مادر خرج,سایت مدیریت مخارج دسته جمعی"/>
+    <meta name="author" content="بنا به قوانین مسابقه ذکر نشد"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> <!-- Respomsive Design -->
+    <!-- End Basic Page Metatags -->
 
 
-<!-- Import CSS Files -->	  
-<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="screen"> <!-- Used for Respomsive Design -->
-<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">	<!-- Main Stylesheet -->  
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="screen"> <!-- Font Icons -->  
+<!-- Import CSS Files -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" media="screen"> <!-- Used for Respomsive Design -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="screen">	<!-- Main Stylesheet -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}" media="screen"> <!-- Font Icons -->
 <!-- End Import CSS Files -->
 
 
@@ -28,106 +31,104 @@
 <div id="container" class="container">
 
 
-<!-- Header -->
-<div class="pagetitle">
-<div class="col-md-6">
-<a href="index.html"><img src="images/header.png" alt="لوگوی وب سایت پیک"></a>
-</div>
-</div>
-<!-- End Header -->
+    <!-- Header -->
+    <div class="pagetitle">
+        <div class="col-md-6">
+<a href="index.html"><img src="{% static 'images/header.png' %}" alt="لوگوی وب سایت پیک"></a>
+        </div>
+    </div>
+    <!-- End Header -->
 
-<!-- HomePage Main Area -->
-<div id="content"> 
+    <!-- HomePage Main Area -->
+    <div id="content">
 
-<div class="box-section">
-<div class="col-md-12 pagetitle">
-<a href="#"><i class="fa fa-info"></i></a>
-<h1>پیک چیست ؟</h1>
-<p>
-لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد .
-<p>
-</div>
-</div>
+        <div class="box-section">
+            <div class="col-md-12 pagetitle">
+                <a href="#"><i class="fa fa-info"></i></a>
+                <h1>پیک چیست ؟</h1>
+                <p>
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
+                    و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                    آینده شناخت فراوان جامعه و متخصصان را می طلبد .
+                <p>
+            </div>
+        </div>
 
-<div class="box-section">
+        <div class="box-section">
 
-<!-- Right Half : Login -->
-<div class="col-md-6">		
-<h2>وارد شوید</h2>
-<div id="login-msg" class="message"></div>
-<form id="login-form" action="Purchases.html" method="POST">
-<div class="text-fields">
-<div class="float-input">
-<input name="username" id="username" type="text" placeholder="نام کاربری">
-<span><i class="fa fa-user"></i></span>
-</div>
-<div class="float-input">
-<input name="password" id="password" type="password" placeholder="گذرواژه">
-<span><i class="fa fa-unlock-alt"></i></span>
-</div>
-<div class="submit-area">
-<button type="submit" name="login" id="submit_login">
-ورود
-</button>
-</div>
-</div>
-</form>
-</div>
-<!-- End Right Half : Login -->
+            <!-- Right Half : Login -->
+            <div class="col-md-6">
+                <h2>وارد شوید</h2>
+                <div id="login-msg" class="message"></div>
+                <form id="login-form" action="/users/login" method="POST">
+                    {#                    {{login_form}}#}
+                    <div class="text-fields">
+                        {% csrf_token %}
+                        {{login_form.errors}}
+                        {% for item in login_form %}
+                            <div class="float-input">
+                                {{ item }}
+                                <span><i class="fa fa-user"></i></span>
+                            </div>
+                        {% endfor %}
+                        <div class="submit-area">
+                            <button type="submit" name="login" id="submit_login">
+                                ورود
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End Right Half : Login -->
 
-<!-- Left Half : Register -->
-<div class="col-md-6"> 
-<h2>عضو شوید</h2>
-<div id="register-msg" class="message"></div>
-<form id="register-form" action="CreateGroup.html" method="POST">
-<div class="text-fields">
-<div class="float-input">
-<input name="name" id="name" type="text" placeholder="نام و نام خانوادگی">
-<span><i class="fa fa-user"></i></span>
-</div>
-<div class="float-input">
-<input name="email" id="email" type="text" placeholder="آدرس ایمیل">
-<span><i class="fa fa-envelope"></i></span>
-</div>
-<div class="float-input">
-<input name="password" id="register-password" type="password" placeholder="گذرواژه">
-<span><i class="fa fa-unlock-alt"></i></span>
-</div>
-<div class="float-input">
-<input name="password2" id="register-password2" type="password" placeholder="تکرار گذرواژه">
-<span><i class="fa fa-unlock-alt"></i></span>
-</div>
-<div class="submit-area">
-<button type="submit" name="register" id="submit_register">
-عضویت
-</button>
-</div>
-</div>
-</form>
-</div>
-<!-- End Left Half : Register -->
+            <!-- Left Half : Register -->
+            <div class="col-md-6">
+                <h2>عضو شوید</h2>
+                <div id="register-msg" class="message"></div>
+                <form id="register-form" action="/users/register" method="POST">
+                    {#                    {{register_form}}#}
+                    <div class="text-fields">
+                        {% csrf_token %}
+                        {{register_form.errors}}
+                        {% for item in register_form %}
+                            <div class="float-input">
+                                {{ item }}
+                                <span><i class="fa fa-user"></i></span>
+                            </div>
+                        {% endfor %}
+                        <div class="submit-area">
+                            <button type="submit" name="register" id="submit_register">
+                                عضویت
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End Left Half : Register -->
 
 
-<!-- Footer -->
-<div class="tp-footer">
-<p>
-2015 &copy; کلیه حقوق مادی و معنوی این وب سایت برای دبیرخانه دومین دوره مسابقات مهارت سنجی فناورد محفوظ است .
-</p>
-</div>
-<!-- End Footer -->
-</div>
+            <!-- Footer -->
+            <div class="tp-footer">
+                <p>
+                    2015 &copy; کلیه حقوق مادی و معنوی این وب سایت برای دبیرخانه دومین دوره مسابقات مهارت سنجی فناورد
+                    محفوظ است .
+                </p>
+            </div>
+            <!-- End Footer -->
+        </div>
 
 
-</div>
-<!-- End HomePage Main Area -->
+    </div>
+    <!-- End HomePage Main Area -->
 
 </div>
 <!-- End Whole Page Section -->
 
 
 <!-- Import JS Files -->
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 <!-- Import JS Files -->
 
 

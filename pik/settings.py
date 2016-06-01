@@ -26,6 +26,7 @@ SECRET_KEY = '*$&qp*oakyd)g=(r1_p^s5*gidij-bjw%a2z(+(-a4t94x1l+o'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+AUTH_USER_MODEL = "UserApp.CustomizedUser"
 
 
 # Application definition
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'theme',
     'groupApp',
-    'purchase.app.PurchaseConfig'
+    'purchase.apps.PurchaseConfig',
+    'UserApp',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -82,8 +84,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'pik',
         'HOST': 'localhost',
-        'USERNAME': 'fosoul',
-        'PASSWORD': '1'
+        'USER': 'postgres',
+        'PASSWORD': '123qwe!',
+        'PORT': ''
     }
 }
 
