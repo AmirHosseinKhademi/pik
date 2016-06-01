@@ -26,6 +26,7 @@ SECRET_KEY = '*$&qp*oakyd)g=(r1_p^s5*gidij-bjw%a2z(+(-a4t94x1l+o'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+AUTH_USER_MODEL = "UserApp.CustomizedUser"
 
 
 # Application definition
@@ -37,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'theme'
-    'purchase.app.PurchaseConfig'
+    'theme',
+    'groupApp',
+    'purchase.apps.PurchaseConfig',
+    'UserApp',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -78,8 +81,12 @@ WSGI_APPLICATION = 'pik.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pik',
+        'HOST': 'localhost',
+        'USER': 'postgres',
+        'PASSWORD': '123qwe!',
+        'PORT': ''
     }
 }
 
