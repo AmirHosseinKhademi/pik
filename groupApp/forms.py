@@ -33,3 +33,4 @@ class AddMemberForm(forms.ModelForm):
     class Meta:
         model = UserGroup
         exclude = ['group', 'join_datetime']
+

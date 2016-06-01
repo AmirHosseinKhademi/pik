@@ -15,6 +15,7 @@ class Group(models.Model):
         self.admin = user
         self.save()
 
+
 class UserGroup(models.Model):
     group = models.ForeignKey(Group)
     member = models.ManyToManyField(CustomizedUser)
