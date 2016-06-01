@@ -4,9 +4,7 @@ from django.db.models.query_utils import Q
 from django.shortcuts import render
 
 from UserApp.models import CustomizedUser
-from groupApp import admin
 from groupApp.forms import CreateGroupForm, AddMemberForm
-from groupApp.models import Group, UserGroup
 
 from dal import autocomplete
 
@@ -17,26 +15,23 @@ def create_group(request):
         create_form = CreateGroupForm(request.POST, prefix='create_group')
         member_form = AddMemberForm(request.POST, prefix='add_member')
 
-        if create_form.is_valid and member_form.is_valid():
+        if create_form.is_valid() and member_form.is_valid():
+
             admin = request.user
             create_form_obj = create_form.save(commit=False)
             create_form_obj.admin = admin
             create_form_obj.save()
+
             member_form_obj = member_form.save(commit=False)
-            member_form_obj.group = create_form_obj
+            member_form_obj.group = create_form.instance
             member_form_obj.save()
-            # create_form_cd = create_form.cleaned_data
-            # member_form_cd = member_form.cleaned_data
-            # group = Group(title=create_form_cd['title'], admin=create_form_cd['admin'])
-            # members = UserGroup(group=group, )
-            # group.save()
-        # return render(request, 'CreateGroup.html', {'create_form': CreateGroupForm()})
+            member_form.save_m2m()
+
         return render(request, 'CreateGroup.html', {'create_form': CreateGroupForm(), 'member_form': AddMemberForm()})
+
     else:
         create_form = CreateGroupForm(prefix='create_group')
         member_form = AddMemberForm(prefix='add_member')
-        # print(create_form)
-        # return render(request, 'CreateGroup.html', {'create_form': create_form})
         return render(request, 'CreateGroup.html', {'create_form': create_form, 'member_form': member_form})
 
 
