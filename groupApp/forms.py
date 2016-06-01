@@ -1,6 +1,7 @@
 from dal import autocomplete
 from django import forms
 
+from UserApp.models import CustomizedUser
 from groupApp.models import Group, UserGroup
 
 
@@ -17,16 +18,18 @@ class CreateGroupForm(forms.ModelForm):
 
     class Meta:
         model = Group
-        exclude = ['creation_datetime']
+        exclude = ['admin', 'creation_datetime']
 
 
 class AddMemberForm(forms.ModelForm):
 
-    # member = forms.ModelMultipleChoiceField(
-    #     queryset=Users.objects.all(),
-    #     widget=autocomplete.ModelSelect2Multiple(url='members-autocomplete')
-    # )
+    member = forms.ModelMultipleChoiceField(
+        queryset=CustomizedUser.objects.all(),
+        widget=autocomplete.ModelSelect2Multiple(
+            url='members-autocomplete'
+        )
+    )
 
     class Meta:
         model = UserGroup
-        exclude = ['join_datetime']
+        exclude = ['group', 'join_datetime']

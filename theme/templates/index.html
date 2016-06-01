@@ -65,7 +65,25 @@
                     {#                    {{login_form}}#}
                     <div class="text-fields">
                         {% csrf_token %}
-                        {{login_form.errors}}
+
+
+
+                        {% if login_form.errors %}
+                            {% for field in login_form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-error">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in login_form.non_field_errors %}
+                                <div class="alert alert-error">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+
                         {% for item in login_form %}
                             <div class="float-input">
                                 {{ item }}
@@ -90,7 +108,24 @@
                     {#                    {{register_form}}#}
                     <div class="text-fields">
                         {% csrf_token %}
-                        {{register_form.errors}}
+
+
+
+                        {% if register_form.errors %}
+                            {% for field in register_form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-error">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in register_form.non_field_errors %}
+                                <div class="alert alert-error">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
                         {% for item in register_form %}
                             <div class="float-input">
                                 {{ item }}

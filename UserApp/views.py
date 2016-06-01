@@ -1,9 +1,9 @@
+from django.forms.utils import ErrorList
 from django.shortcuts import render, render_to_response
 from django.contrib.auth import authenticate, login, get_user_model, logout
 from django.template import RequestContext
 from UserApp.forms import LoginForm, UserForm
 from django.http.response import HttpResponseRedirect
-
 
 # Create your views here.
 
@@ -33,13 +33,14 @@ def CheckCredential(request):
                     login(request, user)
                     return HttpResponseRedirect('../Purchases.html')
                 else:
-                    print("The password is valid, but the account has been disabled!")
-                    print(login_form.errors.as_data())
+                    errors = login_form._errors.setdefault("username", ErrorList())
+                    errors.append(u"The password is valid, but the account has been disabled!")
                     return render(request, 'index.html', {'register_form': register_form, 'login_form': login_form},
                                   context_instance=RequestContext(request))
             else:
                 # the authentication system was unable to verify the username and password
-                print("The username and password were incorrect.")
+                errors = login_form._errors.setdefault("username", ErrorList())
+                errors.append(u"The username or password was incorrect.")
                 print(login_form.errors.as_data())
                 return render(request, 'index.html', {'register_form': register_form, 'login_form': login_form},
                               context_instance=RequestContext(request))
@@ -56,9 +57,8 @@ def RegisterUser(request):
         if register_form.is_valid():
             flag = get_user_model().objects.filter(email=request.POST['email']).exists()
             if flag == True:
-                #print(register_form.errors.as_data())
-                #register_form = UserForm()
-                #login_form = LoginForm()
+                errors = register_form._errors.setdefault("email", ErrorList())
+                errors.append(u"This email exists. Please try another one.")
                 return render(request, 'index.html', {'register_form': register_form, 'login_form': login_form},
                               context_instance=RequestContext(request))
             if register_form.cleaned_data['password'] == register_form.cleaned_data['password_confirmation']:
@@ -66,11 +66,12 @@ def RegisterUser(request):
                 return HttpResponseRedirect('../CreateGroup.html')
 
             else:
+                errors = register_form._errors.setdefault("password", ErrorList())
+                errors.append(u"password and password confirmation should be the same.")
                 print(register_form.errors.as_data())
                 return render(request, 'index.html', {'register_form': register_form, 'login_form': login_form},
                               context_instance=RequestContext(request))
         else:
-            print(register_form.errors.as_data())
             return render(request, 'index.html', {'register_form': register_form, 'login_form': login_form},
                           context_instance=RequestContext(request))
     elif request.method == 'GET':
