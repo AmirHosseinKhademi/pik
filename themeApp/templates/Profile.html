@@ -3,34 +3,36 @@
 {% block balance %}12500{% endblock %}
 {% block page_header %}پروفایل شما{% endblock %}
 {% block content %}
-    <form id="form" action="#" method="POST">
-        <div id="msg" class="message"></div>
-        <div class="text-fields">
+    <form action="" method="POST">
+        {% if message %}
+            <div id="msg" class="message">
+                {{ message }}
+            </div>
+        {% endif %}
+
+        {% if form.errors %}
+            {% for error in form.non_field_errors %}
+                <div id="msg" class="error_message">
+                    {{ error|escape }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% csrf_token %}
+        {% for item in form %}
+            {% for error in item.errors %}
+                <div class="error_message">
+                    {{ error }}
+                </div>
+            {% endfor %}
             <div class="float-input">
-                <input name="name" id="name" type="text" placeholder="عادل دادرس">
+                {{ item }}
                 <span><i class="fa fa-user"></i></span>
             </div>
-            <div class="float-input">
-                <input name="email" id="email" type="text" placeholder="khademi@terapico.ir">
-                <span><i class="fa fa-envelope"></i></span>
-            </div>
-            <div class="float-input">
-                <input name="debit-card" id="debit-card" type="text" placeholder="6104337979757356">
-                <span><i class="fa fa-envelope"></i></span>
-            </div>
-            <div class="float-input">
-                <input name="password" id="password" type="password" placeholder="گذرواژه جدید (درصوتیکه قصد تغییر آنرا ندارید چیزی وارد نکنید)">
-                <span><i class="fa fa-unlock-alt"></i></span>
-            </div>
-            <div class="float-input">
-                <input name="password2" id="password2" type="password" placeholder="تکرار گذرواژه">
-                <span><i class="fa fa-unlock-alt"></i></span>
-            </div>
-            <div class="submit-area">
-                <button type="submit" name="update-profile" id="submit-update-profile" onclick="updateProfileMessage();">
-                    اعمال تغییرات
-                </button>
-            </div>
+        {% endfor %}
+        <div class="submit-area">
+            <input type="submit" value="بروزرسانی تغییرات">
+        </div>
         </div>
     </form>
 

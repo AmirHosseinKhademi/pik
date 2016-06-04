@@ -9,17 +9,17 @@ Date : 9/8/1394
 /*-------------------------------------------------------*/
 
 @font-face {
-font-family: 'BHoma';
-src: url('../TP-Fonts/BHoma/BHoma.eot?#') format('eot'),
-url('../TP-Fonts/BHoma/BHoma.ttf') format('truetype'),
-url('../TP-Fonts/BHoma/BHoma.woff') format('woff');
+  font-family: 'BHoma';
+  src: url('../TP-Fonts/BHoma/BHoma.eot?#') format('eot'),
+  url('../TP-Fonts/BHoma/BHoma.ttf') format('truetype'),
+  url('../TP-Fonts/BHoma/BHoma.woff') format('woff');
 }
 
 @font-face {
-font-family: 'BYekan';
-src: url('../TP-Fonts/BYekan/BYekan.eot?#') format('eot'),
-url('../TP-Fonts/BYekan/BYekan.ttf') format('truetype'),
-url('../TP-Fonts/BYekan/BYekan.woff') format('woff');
+  font-family: 'BYekan';
+  src: url('../TP-Fonts/BYekan/BYekan.eot?#') format('eot'),
+  url('../TP-Fonts/BYekan/BYekan.ttf') format('truetype'),
+  url('../TP-Fonts/BYekan/BYekan.woff') format('woff');
 }
 
 /*-------------------------------------------------*/
@@ -125,12 +125,12 @@ header {
 }
 
 .tp-menu li a {
-background-color: #8AB928;padding: 6px 30px;padding-right: 15px;color: white;border-radius: 5px;font-family: BYekan;font-size: 18px;
+  background-color: #8AB928;padding: 6px 30px;padding-right: 15px;color: white;border-radius: 5px;font-family: BYekan;font-size: 18px;
   transition: all 0.23s ease-in-out;
   -moz-transition: all 0.23s ease-in-out;
   -webkit-transition: all 0.23s ease-in-out;
   -o-transition: all 0.23s ease-in-out;
-display: block;text-align: center;}
+  display: block;text-align: center;}
 
 .tp-menu ul li a:hover {
   background: #C42A2E;
@@ -141,10 +141,10 @@ display: block;text-align: center;}
 }
 
 .tp-menu ul {
-    margin: 0;
-    padding: 0;
-    margin-top: 10px;
-    direction: rtl;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+  direction: rtl;
 }
 
 .box-section .pagetitle a {
@@ -273,7 +273,7 @@ span.icon-stat i {
   -webkit-transition: all 0.23s ease-in-out;
   -o-transition: all 0.23s ease-in-out;
 }
-input[type="text"], input[type="password"], select,
+input[type="text"], input[type="password"], input[type="email"], input[type="number"], select,
 textarea {
   color: #848484;
   font-size: 18px;
@@ -288,7 +288,7 @@ textarea {
   border-radius: 0px;
   outline: none;
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   display: block;
   margin-bottom: 10px;
   transition: all 0.23s ease-in-out;
@@ -301,11 +301,11 @@ input[type="text"]:focus + span i,input[type="password"]:focus + span i{
   background: #8ab928;
   border: 1px solid #8ab928;
 }
- textarea {
+textarea {
   height: 194px;
   border: 1px solid #eaeaea;
 }
-button {
+button, input[type='submit'] {
   width: 100%;
   text-align: center;
   color: #fff;
@@ -324,19 +324,19 @@ button {
   -webkit-backface-visibility: hidden;
 }
 
- button i
- {
+button i
+{
   display: block;
   color: #ffffff;
   font-size: 20px;
   /* margin-bottom: 8px; */
   /* line-height: 20px; */
 }
- button:hover {
+button:hover {
   opacity: 0.8;
 }
 .message {
-  display: none;
+  display: block;
   clear: both;
   font-size: 13px;
   font-family: tahoma;
@@ -362,7 +362,7 @@ button {
   #content {
     width: 100%;
   }
-  
+
   .submit-area {
     width: 135px;
   }
@@ -390,7 +390,7 @@ button {
   }
 }
 @media (max-width: 767px) {
-  
+
   .submit-area {
     float: none;
     width: 100%;
@@ -403,7 +403,7 @@ button {
 
 
 tspan{font-family: BYekan,'BYekan',tahoma;
-font-size: 32px;}
+  font-size: 32px;}
 
 ::selection {
   background: #95D2FF;
@@ -436,36 +436,36 @@ font-size: 32px;}
 }
 
 @media (max-width: 1200px) {
-	.tp-report-box {
-		width: 32%;
-	}
+  .tp-report-box {
+    width: 32%;
+  }
 }
 
 @media (max-width: 548px) {
-	.tp-report-box {
-		width: 48%;
-	}
+  .tp-report-box {
+    width: 48%;
+  }
 }
 
 @media (max-width: 388px) {
-	.tp-report-box {
-		width: 99%;
-	}
+  .tp-report-box {
+    width: 99%;
+  }
 }
 
 
 .tp-report-box:hover {
   background: #F3F3F3;
-   transition: all 0.23s ease-in-out;
+  transition: all 0.23s ease-in-out;
   -moz-transition: all 0.23s ease-in-out;
   -webkit-transition: all 0.23s ease-in-out;
   -o-transition: all 0.23s ease-in-out;
 }
 
 .tp-report-box h4 {
- font: 100 14px BKoodak;
- color: #717171;
- width: 100%;
+  font: 100 14px BKoodak;
+  color: #717171;
+  width: 100%;
 }
 
 .tp-report-box i {
@@ -484,20 +484,20 @@ font-size: 32px;}
 }
 
 .tp-report-dl i {
-   color: #C3C3C3;
-   font-size: 16px;
-   line-height: normal;
-   transition: all 0.23s ease-in-out;
+  color: #C3C3C3;
+  font-size: 16px;
+  line-height: normal;
+  transition: all 0.23s ease-in-out;
   -moz-transition: all 0.23s ease-in-out;
   -webkit-transition: all 0.23s ease-in-out;
   -o-transition: all 0.23s ease-in-out;
 }
 
 .tp-report-dl i:hover {
-   color: #43B3FC;
-   font-size: 16px;
-   line-height: normal;
-   transition: all 0.23s ease-in-out;
+  color: #43B3FC;
+  font-size: 16px;
+  line-height: normal;
+  transition: all 0.23s ease-in-out;
   -moz-transition: all 0.23s ease-in-out;
   -webkit-transition: all 0.23s ease-in-out;
   -o-transition: all 0.23s ease-in-out;
@@ -555,7 +555,7 @@ font-size: 32px;}
 }
 
 .tp-filters .active {
-    background: rgb(96, 34, 132);
+  background: rgb(96, 34, 132);
 }
 
 .tp-purchase-box{
@@ -579,12 +579,12 @@ font-size: 32px;}
 
 .tp-purchase-box .tp-pic-box span {
 
-display: block;color: #8AB928;font-size: 35px;line-height: 130%;}
+  display: block;color: #8AB928;font-size: 35px;line-height: 130%;}
 
 
 .tp-purchase-box .tp-pic-box #purchase-code {
 
-font-size: 20px;color: #C42A2E;font-family: tahoma;}
+  font-size: 20px;color: #C42A2E;font-family: tahoma;}
 
 .tp-purchase-box button {
   width: 100%;
@@ -623,7 +623,7 @@ font-size: 20px;color: #C42A2E;font-family: tahoma;}
 
 .tp-purchase-box .tftable .tp-not-paied {
 
-color: red;font-size: 15px;padding: 4px;}
+  color: red;font-size: 15px;padding: 4px;}
 
 .tp-purchase-box .tftable .tp-paied {
   color: green;
@@ -711,7 +711,7 @@ color: red;font-size: 15px;padding: 4px;}
 }
 
 .tp-footer p {
-color: #B9B9B9;margin: 0;
+  color: #B9B9B9;margin: 0;
 }
 
 .pagetitle a img {
@@ -728,4 +728,18 @@ color: #B9B9B9;margin: 0;
   float:right;
   line-height: 150%;
   margin-left: 8px;
+}
+
+.error_message {
+  display: block;
+  clear: both;
+  font-size: 13px;
+  font-family: tahoma;
+  float: none;
+  margin: 0px 0 15px 0;
+  padding: 5px 10px 5px 5px;
+  background: rgba(255, 200, 200, 0.27);
+  border-radius: 5px;
+  border-right: 2px solid #FD0A20;
+  border-left: 2px solid #FD0A20;
 }
