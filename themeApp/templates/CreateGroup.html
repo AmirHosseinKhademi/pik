@@ -10,31 +10,8 @@
         برای استفاده از این سامانه ، تمامی اعضا میبایست عضو سایت باشند ، با اضافه کردن اعضا به گروه ، برای آنها دعوتنامه ای از طریق ایمیل ارسال میگردد .
     </p>
     <!-- Create Group Form -->
-{#    <form id="form" action="" method="POST">#}
-{#        {% csrf_token %}#}
-{#        <div id="msg" class="message"></div>#}
-{#        <div class="text-fields">#}
-{#            {% for item in create_form %}#}
-{#                <div class="float-input ">#}
-{#                    {{ item }}#}
-{#                    <span><i class="fa fa-user"></i></span>#}
-{#                </div>#}
-{#            {% endfor %}#}
-{##}
-            {#            <div class="tp-added-members">#}
-            {#            </div>#}
-{#            <div class="submit-area">#}
-                {#                <button type="submit" name="creategruoup" id="submit_creategruoup" onclick="createGruoupMessage();">#}
-                {#                </button>#}
-{#                <button type="submit" >#}
-{#                    ساخت گروه#}
-{#                </button>#}
-{#            </div>#}
-{#        </div>#}
-{#    </form>#}
-
     <form action="" method="post">
-    {% csrf_token %}
+        {% csrf_token %}
         <div id="msg" class="message"></div>
         <div class="text-fields">
             {% for item in create_form %}
@@ -44,11 +21,15 @@
                 </div>
             {% endfor %}
 
-            {#            <div class="tp-added-members">#}
-            {#            </div>#}
+            {% for item in member_form %}
+{#                <div class="float-input ">#}
+                    {{ item }}
+                    <span><i class="fa fa-user"></i></span>
+{#                </div>#}
+            {% endfor %}
+
             <div class="submit-area">
-                {#                <button type="submit" name="creategruoup" id="submit_creategruoup" onclick="createGruoupMessage();">#}
-                {#                </button>#}
+
                 <button type="submit" >
                     ساخت گروه
                 </button>
@@ -56,7 +37,7 @@
         </div>
     </form>
     <script type="text/javascript" src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
-    {{ create_form.media }}
+    {{ member_form.media }}
     <!-- End Create Group Form -->
 
     <!-- End Create Group Main Area -->
