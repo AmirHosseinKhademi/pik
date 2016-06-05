@@ -1,5 +1,5 @@
 from django import forms
-from UserApp.models import CustomizedUser
+from .models import CustomizedUser
 
 class LoginForm (forms.Form):
     username = forms.CharField(max_length = 30, help_text=('Required. 30 characters or fewer. Letters, digits and '

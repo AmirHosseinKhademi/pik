@@ -1,8 +1,9 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from . import views
 
 urlpatterns = [
-    url(r'^login$', 'UserApp.views.CheckCredential', name ='loginUser'),
-    url(r'^register$', 'UserApp.views.RegisterUser', name ='registerUser'),
+    url(r'^login$', views.CheckCredential, name='loginUser'),
+    url(r'^register$', views.RegisterUser, name='registerUser'),
 
 ]

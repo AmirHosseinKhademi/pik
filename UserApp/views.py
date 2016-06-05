@@ -1,9 +1,11 @@
+from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
 from django.shortcuts import render, render_to_response
 from django.contrib.auth import authenticate, login, get_user_model, logout
 from django.template import RequestContext
-from UserApp.forms import LoginForm, UserForm
+from .forms import LoginForm, UserForm
 from django.http.response import HttpResponseRedirect
-from django.forms.util import ErrorList
+from django.forms.utils import ErrorList
+from django.contrib.auth import password_validation
 
 # Create your views here.
 
@@ -62,9 +64,15 @@ def RegisterUser(request):
                 return render(request, 'index.html', {'register_form': register_form, 'login_form': login_form},
                               context_instance=RequestContext(request))
             if register_form.cleaned_data['password'] == register_form.cleaned_data['password_confirmation']:
-                register_form.save()
-                return HttpResponseRedirect('../CreateGroup.html')
-
+                try:
+                    flag_err = password_validation.validate_password(register_form.cleaned_data['password'])
+                    register_form.save()
+                    return HttpResponseRedirect('../CreateGroup.html')
+                except ValidationError as err:
+                    errors = register_form._errors.setdefault("password", ErrorList())
+                    errors.append('; '.join(err))
+                    return render(request, 'index.html', {'register_form': register_form, 'login_form': login_form},
+                                  context_instance=RequestContext(request))
             else:
                 errors = register_form._errors.setdefault("password", ErrorList())
                 errors.append(u"password and password confirmation should be the same.")
