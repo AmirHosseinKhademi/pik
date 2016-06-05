@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'themeApp',
     'groupApp',
-    #'purchase.apps.PurchaseConfig',
+    'purchaseApp.apps.PurchaseConfig',
     'UserApp',
 ]
 
