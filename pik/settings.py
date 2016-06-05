@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'theme',
+    'themeApp',
     'groupApp',
-    #'purchase.apps.PurchaseConfig',
+    'purchaseApp.apps.PurchaseConfig',
     'UserApp',
 ]
 
