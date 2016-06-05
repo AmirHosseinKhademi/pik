@@ -23,9 +23,8 @@ from UserApp import views
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^user/', include(theme_url)),
-#    url(r'^admin/', admin.site.urls),
     url(r'^pikadmin/', admin_site.urls),
     url(r'^group/', include(group_url)),
     url(r'^users/', include(user_url)),
     url(r'^$', views.index , name='index')
+]

@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
 from django.shortcuts import render, render_to_response
 from django.contrib.auth import authenticate, login, get_user_model, logout
 from django.template import RequestContext
-from .forms import LoginForm, UserForm
+from .forms import LoginForm, UserForm, UserProfileForm
 from django.http.response import HttpResponseRedirect
 from django.forms.utils import ErrorList
 from django.contrib.auth import password_validation

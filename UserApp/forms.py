@@ -1,5 +1,6 @@
 from django import forms
 from .models import CustomizedUser
+from django.forms import ModelForm
 
 class LoginForm (forms.Form):
     username = forms.CharField(max_length = 30, help_text=('Required. 30 characters or fewer. Letters, digits and '
@@ -20,3 +21,7 @@ class UserForm(forms.Form):
         user.set_password(self.cleaned_data["password"])
         user.save()
 
+class UserProfileForm(ModelForm):
+    class Meta:
+        model = CustomizedUser
+        fields = ['name', 'email', 'debit_card']
