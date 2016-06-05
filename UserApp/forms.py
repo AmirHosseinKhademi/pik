@@ -1,5 +1,5 @@
 from django import forms
-from UserApp.models import CustomizedUser
+from .models import CustomizedUser
 from django.forms import ModelForm
 
 class LoginForm (forms.Form):
@@ -20,7 +20,6 @@ class UserForm(forms.Form):
         user = CustomizedUser(email=data['email'], name=data['name'])
         user.set_password(self.cleaned_data["password"])
         user.save()
-
 
 class UserProfileForm(ModelForm):
     class Meta:

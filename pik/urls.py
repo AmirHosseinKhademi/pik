@@ -17,16 +17,16 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from groupApp import urls as group_url
 from UserApp import urls as user_url
+from UserApp.admin import admin_site
+from UserApp import views
 from purchaseApp import urls as purchase_url
-import UserApp
-from .libraries import request
+
+admin.autodiscover()
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^pikadmin/', admin_site.urls),
     url(r'^group/', include(group_url)),
     url(r'^users/', include(user_url)),
     url(r'^purchases/', include(purchase_url)),
-    url(r'^api/', request.api, name="api"),
-    url(r'^$', UserApp.views.index, name='index'),
-
+    url(r'^$', views.index , name='index')
 ]
