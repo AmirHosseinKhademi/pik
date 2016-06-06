@@ -14,30 +14,59 @@
         {% csrf_token %}
         <div id="msg" class="message"></div>
         <div class="text-fields">
-            {% for item in create_form %}
-                <div class="float-input ">
-                    {{ item }}
-                    <span><i class="fa fa-user"></i></span>
-                </div>
-            {% endfor %}
 
-            {% for item in member_form %}
-{#                <div class="float-input ">#}
+            <!-- Edit Groups Form List-->
+            {% if edit %}
+                {% for form in edit_group_form %}
+                    {% if not forloop.last %}
+                        {{ form }}
+                        <span><i class="fa fa-user"></i></span>
+                        <p>
+                            {% url 'edit_group' form.id.value as edit_url%}
+                            <a class="btn btn-info" href="{{ edit_url }}">ویرایش</a>
+                        </p>
+                    {% endif %}
+
+                {% endfor %}
+            {% endif %}
+
+            <!-- Edit Group Form -->
+            {% if edit_group %}
+                {{ edit_group_form }}
+                {#                {% for form in edit_group_form %}#}
+                {#                    <div class="float-input ">#}
+                {#                        {{ item }}#}
+                {#                        <span><i class="fa fa-user"></i></span>#}
+                {#                    </div>#}
+                {#                {% endfor %}#}
+            {% endif %}
+
+            <!-- Create Group Form -->
+            {% if create %}
+                {% for item in create_form %}
+                    {#                        <div class="float-input ">#}
                     {{ item }}
                     <span><i class="fa fa-user"></i></span>
-{#                </div>#}
-            {% endfor %}
+                    {#                        </div>#}
+                {% endfor %}
+            {% endif %}
+
 
             <div class="submit-area">
 
                 <button type="submit" >
-                    ساخت گروه
+                    {% if create %}
+                        ساخت گروه
+                    {% elif edit or edit_group_form%}
+                        ذخیره
+                    {% endif %}
                 </button>
             </div>
         </div>
     </form>
     <script type="text/javascript" src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
-    {{ member_form.media }}
+    {{ create_form.media }}
+    {{ edit_group_form.media }}
     <!-- End Create Group Form -->
 
     <!-- End Create Group Main Area -->
