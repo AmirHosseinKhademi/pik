@@ -8,9 +8,17 @@ class ChargeAccountForm(ModelForm):
         model = AccountingModel
         fields = ['amount']
         widgets = {
-            'amount' : TextInput(attrs={'placeholder': 'مقدار شارژ به ریال'})
+            'amount' : TextInput(attrs={'placeholder': 'مقدار شارژ به ریال', 'value': ''})
         }
 
     # def save(self, commit=True):
     #     data = self.cleaned_data
     #     self.
+
+class CheckoutForm(ModelForm):
+    class Meta:
+        model = AccountingModel
+        fields = ['amount']
+        widgets = {
+            'amount' : TextInput(attrs={'placeholder': 'مقدار تسویه به ریال'})
+        }

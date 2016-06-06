@@ -6,10 +6,10 @@
 
     <div class="col-md-6">
         <h2>شارژ حساب</h2>
-        <form action="/charge" method="POST">
-            {% if message %}
+        <form action="/accounting/charge" method="POST">
+            {% if charge_message %}
                 <div id="msg" class="message">
-                    {{ message }}
+                    {{ charge_message }}
                 </div>
             {% endif %}
 
@@ -47,7 +47,7 @@
 
     <div class="col-md-6">
         <h2>درخواست تسویه</h2>
-        <form action="/checkout" method="POST">
+        <form action="/accounting/checkout" method="POST">
             {% if message %}
                 <div id="msg" class="message">
                     {{ message }}
@@ -87,17 +87,17 @@
     </div>
 
 
-    <div class="col-md-12">
-        <div class="tp-groups-table">
-            <table class="tftable" border="1">
-                <tr><th>ردیف</th><th>نوع تراکنش</th><th>مبلغ</th><th>تاریخ</th><th>خرید مربوطه</th></tr>
-                <tr><td>1</td><td>برداخت بیک</td><td>12500</td><td>17/12/95</td><td>خرید سیب زمینی !</td></tr>
-                <tr><td>1</td><td>شارژ حساب</td><td>12500</td><td>17/12/95</td><td>-</td></tr>
-                <tr><td>1</td><td>تسویه حساب</td><td>12500</td><td>17/12/95</td><td>-</td></tr>
-
-            </table>
-        </div>
-    </div>
+{#    <div class="col-md-12">#}
+{#        <div class="tp-groups-table">#}
+{#            <table class="tftable" border="1">#}
+{#                <tr><th>ردیف</th><th>نوع تراکنش</th><th>مبلغ</th><th>تاریخ</th><th>خرید مربوطه</th></tr>#}
+{#                <tr><td>1</td><td>برداخت بیک</td><td>12500</td><td>17/12/95</td><td>خرید سیب زمینی !</td></tr>#}
+{#                <tr><td>1</td><td>شارژ حساب</td><td>12500</td><td>17/12/95</td><td>-</td></tr>#}
+{#                <tr><td>1</td><td>تسویه حساب</td><td>12500</td><td>17/12/95</td><td>-</td></tr>#}
+{##}
+{#            </table>#}
+{#        </div>#}
+{#    </div>#}
 
 
 {% endblock %}
