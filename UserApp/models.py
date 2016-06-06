@@ -30,7 +30,7 @@ class CustomizedUser(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=60, blank=False)
     balance = models.PositiveIntegerField(default=0, null=True, blank=True)
     debit_card = models.PositiveIntegerField(null=True, blank=True)
-    email = models.EmailField(unique=True, verbose_name='email address', max_length=255)
+    email = models.EmailField(unique=True, verbose_name='آدرس ایمیل', max_length=255)
     is_staff = models.BooleanField(('staff status'), default=False,
                                    help_text=('Designates whether the user can log into this admin '
                                               'site.'))
