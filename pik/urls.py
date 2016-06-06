@@ -15,20 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-
-from UserApp.views import index
-from theme import urls as theme_url
 from groupApp import urls as group_url
 from UserApp import urls as user_url
-# from purchase import urls as purchase_url
-from .libraries import request
+from UserApp.admin import admin_site
+from UserApp import views
+from purchaseApp import urls as purchase_url
+
+admin.autodiscover()
+
 urlpatterns = [
-    url(r'^user/', include(theme_url)),#why user?!
-    url(r'^admin/', admin.site.urls),
+    url(r'^pikadmin/', admin_site.urls),
     url(r'^group/', include(group_url)),
     url(r'^users/', include(user_url)),
-    # url(r'^purchases/', include(purchase_url)),
-    url(r'^api/', request.api, name="api"),
-    url(r'^$', 'UserApp.views.index', name='index')
-
+    url(r'^purchases/', include(purchase_url)),
+    url(r'^$', views.index , name='index')
 ]

@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% load static %}
+{% block title %}{{ static.page_title }}{% endblock %}
+{% block balance %}{{ static.balance }}{% endblock %}
+{% block page_header %}{{ static.page_header }}{% endblock %}
+{% block content %}
+    <form id="form" action="" method="POST">
+        {% csrf_token %}
+        <div id="msg" class="message">{{ msg }}</div>
+        <div class="col-md-6">
+            <div class="text-fields">
+                <span style="color:red">{{ form.non_field_errors }}</span>
+                <div class="float-input">
+                    {{ add_form.title }}
+                    <span style='color:red;'>{{ add_form.title.errors }}</span>
+                    <span><i class="fa fa-cart-plus"></i></span>
+                </div>
+                <div class="float-input">
+                    {{ add_form.price }}
+                    <span style='color:red;'>{{ add_form.price.errors }}</span>
+                    <span><i class="fa fa-money"></i></span>
+                </div>
+                <div class="float-input">
+                    {{ add_form.group }}
+                    <span style='color:red;'>{{ add_form.group.errors }}</span>
+                    <span><i class="fa fa-users"></i></span>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="submit-area">
+                <button type="submit" name="AddPurchase" id="submit_AddPurchase" onclick="addPurchaseMessage();">
+                    اضافه کردن خرید
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

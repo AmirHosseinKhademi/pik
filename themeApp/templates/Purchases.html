@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% block title %}خریدها | سامانه بیک{% endblock %}
+{% block balance %}12500{% endblock %}
+{% block page_header %}خرید های منتظر پرداخت{% endblock %}
+{% block content %}
+
+    <!-- Filters -->
+    <div class="tp-filters">
+        فیلتر خریدها بر اساس گروه :
+        <span class="active" id="filter-all" onclick="filterAll();">همه</span>
+        <span id="filter-dabirestan" onclick="filterDabirestan();">بچه های دبیرستان</span>
+        <span id="filter-coworkers" onclick="filterCoworkers();">همکاران</span>
+        <span id="filter-mountain" onclick="filterMountain();">اکیپ کوهنوردی</span>
+        <span id="filter-reza-hossein" onclick="filterRezaHossein();">منو رضا و حسین</span>
+    </div>
+    <!-- End Filters -->
+
+    <!-- a Single Purchase Box -->
+    <div id="purchase-box-01" class="tp-purchase-box">
+        <div class="col-md-9">
+            <h4>خرید بلیط سرزمین موجهای آبی</h4>
+            <!-- Meta Tags of a Purchase -->
+            <div class="tp-purchase-meta">
+                پرداخت شده توسط : <span>فرزاد</span>
+                | در تاریخ : <span>25/10/94</span>
+                | مبلغ کل : <span>67500 تومان</span>
+            </div>
+            <!-- End Meta Tags of a Purchase -->
+
+            <!-- Table of PICs -->
+            <div class="tp-pic-table">
+                <table class="tftable" border="1">
+                    <tr><th>ردیف</th><th>نام کاربر</th><th>پیک (تومان)</th><th>وضعیت پرداخت</th></tr>
+                    <tr><td>1</td><td>امیرحسین</td><td>13500</td><td class="tp-not-paied"><i class="fa fa-times-circle"></i></td></tr>
+                    <tr><td>2</td><td>محسن</td><td>25000</td><td class="tp-not-paied"><i class="fa fa-times-circle"></i></td></tr>
+                    <tr><td>3</td><td>امین</td><td>14500</td><td class="tp-not-paied"><i class="fa fa-times-circle"></i></td></tr>
+                    <tr><td>4</td><td>فرزاد</td><td>14500</td><td class="tp-paied"><i class="fa fa-check-square"></i></td></tr>
+                </table>
+            </div>
+            <!-- End Table of PICs -->
+        </div>
+
+        <!-- User PIC & Payment -->
+        <div class="col-md-3 tp-pic-box">
+            پــیـک شـمـا
+            <span>13500</span>
+            تـــومــــان
+            <button name="pic-payment" id="pic-payment" onclick="picPayment01();">
+                پرداخت
+            </button>
+        </div>
+        <!-- End User PIC & Payment -->
+
+    </div>
+    <!-- End a Single Purchase Box -->
+
+
+    <!-- a Single Purchase Box -->
+    <div  id="purchase-box-02" class="tp-purchase-box">
+        <div class="col-md-9">
+            <h4>خرید بلیط سرزمین موجهای قرمز</h4>
+            <!-- Meta Tags of a Purchase -->
+            <div class="tp-purchase-meta">
+                پرداخت شده توسط : <span>فرزاد</span>
+                | در تاریخ : <span>25/10/94</span>
+                | مبلغ کل : <span>67500 تومان</span>
+            </div>
+            <!-- End Meta Tags of a Purchase -->
+
+            <!-- Table of PICs -->
+            <div class="tp-pic-table">
+                <table class="tftable" border="1">
+                    <tr><th>ردیف</th><th>نام کاربر</th><th>پیک (تومان)</th><th>وضعیت پرداخت</th></tr>
+                    <tr><td>1</td><td>امیرحسین</td><td>13500</td><td class="tp-not-paied"><i class="fa fa-times-circle"></i></td></tr>
+                    <tr><td>2</td><td>محسن</td><td>25000</td><td class="tp-not-paied"><i class="fa fa-times-circle"></i></td></tr>
+                    <tr><td>3</td><td>امین</td><td>14500</td><td class="tp-not-paied"><i class="fa fa-times-circle"></i></td></tr>
+                    <tr><td>4</td><td>فرزاد</td><td>14500</td><td class="tp-paied"><i class="fa fa-check-square"></i></td></tr>
+                </table>
+            </div>
+            <!-- End Table of PICs -->
+        </div>
+
+        <!-- User PIC & Payment -->
+        <div class="col-md-3 tp-pic-box">
+            پــیـک شـمـا
+            <span>22000</span>
+            تـــومــــان
+            <button name="pic-payment" id="pic-payment1" onclick="picPayment02();">
+                پرداخت
+            </button>
+        </div>
+        <!-- End User PIC & Payment -->
+
+    </div>
+    <!-- End a Single Purchase Box -->
+
+
+    <!-- a Single Purchase Box -->
+    <div id="purchase-box-03" class="tp-purchase-box">
+        <div class="col-md-9">
+            <h4>خرید بلیط سرزمین موجهای سبز</h4>
+            <!-- Meta Tags of a Purchase -->
+            <div class="tp-purchase-meta">
+                پرداخت شده توسط : <span>فرزاد</span>
+                | در تاریخ : <span>25/10/94</span>
+                | مبلغ کل : <span>67500 تومان</span>
+            </div>
+            <!-- End Meta Tags of a Purchase -->
+
+            <!-- Table of PICs -->
+            <div class="tp-pic-table">
+                <table class="tftable" border="1">
+                    <tr><th>ردیف</th><th>نام کاربر</th><th>پیک (تومان)</th><th>وضعیت پرداخت</th></tr>
+                    <tr><td>1</td><td>امیرحسین</td><td>13500</td><td class="tp-not-paied"><i class="fa fa-times-circle"></i></td></tr>
+                    <tr><td>2</td><td>محسن</td><td>25000</td><td class="tp-not-paied"><i class="fa fa-times-circle"></i></td></tr>
+                    <tr><td>3</td><td>امین</td><td>14500</td><td class="tp-not-paied"><i class="fa fa-times-circle"></i></td></tr>
+                    <tr><td>4</td><td>فرزاد</td><td>14500</td><td class="tp-paied"><i class="fa fa-check-square"></i></td></tr>
+                </table>
+            </div>
+            <!-- End Table of PICs -->
+        </div>
+
+        <!-- User PIC & Payment -->
+        <div class="col-md-3 tp-pic-box">
+            پــیـک شـمـا
+            <span>5000</span>
+            تـــومــــان
+            <button name="pic-payment" id="pic-payment2" onclick="picPayment03();">
+                پرداخت
+            </button>
+        </div>
+        <!-- End User PIC & Payment -->
+
+    </div>
+    <!-- End a Single Purchase Box -->
+
+
+    <!-- a Single Purchase Box -->
+    <div id="purchase-box-04" class="tp-purchase-box">
+        <div class="col-md-9">
+            <h4>خرید بلیط سرزمین موجهای صورتی</h4>
+            <!-- Meta Tags of a Purchase -->
+            <div class="tp-purchase-meta">
+                پرداخت شده توسط : <span>فرزاد</span>
+                | در تاریخ : <span>25/10/94</span>
+                | مبلغ کل : <span>67500 تومان</span>
+            </div>
+            <!-- End Meta Tags of a Purchase -->
+
+            <!-- Table of PICs -->
+            <div class="tp-pic-table">
+                <table class="tftable" border="1">
+                    <tr><th>ردیف</th><th>نام کاربر</th><th>پیک (تومان)</th><th>وضعیت پرداخت</th></tr>
+                    <tr><td>1</td><td>امیرحسین</td><td>13500</td><td class="tp-not-paied"><i class="fa fa-times-circle"></i></td></tr>
+                    <tr><td>2</td><td>محسن</td><td>25000</td><td class="tp-not-paied"><i class="fa fa-times-circle"></i></td></tr>
+                    <tr><td>3</td><td>امین</td><td>14500</td><td class="tp-not-paied"><i class="fa fa-times-circle"></i></td></tr>
+                    <tr><td>4</td><td>فرزاد</td><td>14500</td><td class="tp-paied"><i class="fa fa-check-square"></i></td></tr>
+                </table>
+            </div>
+            <!-- End Table of PICs -->
+        </div>
+
+        <!-- User PIC & Payment -->
+        <div class="col-md-3 tp-pic-box">
+            پــیـک شـمـا
+            <span>7200</span>
+            تـــومــــان
+            <button name="pic-payment" id="pic-payment3" onclick="picPayment04();">
+                پرداخت
+            </button>
+        </div>
+        <!-- End User PIC & Payment -->
+
+    </div>
+    <!-- End a Single Purchase Box -->
+
+{% endblock %}

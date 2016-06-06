@@ -1,9 +1,11 @@
 from django import forms
-from UserApp.models import CustomizedUser
+from .models import CustomizedUser
+from django.forms import ModelForm
+from django.forms import PasswordInput, TextInput
 
 class LoginForm (forms.Form):
     username = forms.CharField(max_length = 30, help_text=('Required. 30 characters or fewer. Letters, digits and '
-                    '@/./+/-/_ only.'), widget=forms.TextInput(attrs={'placeholder': 'نام کاربری'}))
+                                                           '@/./+/-/_ only.'), widget=forms.TextInput(attrs={'placeholder': 'نام کاربری'}))
     password = forms.CharField(max_length= 128 , widget=forms.PasswordInput(attrs={'placeholder': 'گذرواژه'}))
 
 
@@ -20,3 +22,15 @@ class UserForm(forms.Form):
         user.set_password(self.cleaned_data["password"])
         user.save()
 
+class UserProfileForm(ModelForm):
+    class Meta:
+        model = CustomizedUser
+        fields = ['name', 'email', 'debit_card']
+        widgets = {
+            # 'password': PasswordInput(attrs={'placeholder': '123456789'}),
+            'debit_card': TextInput()
+        }
+
+class ChangePasswordForm(forms.Form):
+    password = forms.CharField(max_length=20, widget=forms.PasswordInput(attrs={'placeholder': 'گذرواژه'}))
+    password_confirmation = forms.CharField(max_length=20, widget=forms.PasswordInput(attrs={'placeholder': 'تکرار گذرواژه'}))
