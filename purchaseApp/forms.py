@@ -13,6 +13,7 @@ class AddPurchaseFrom(forms.ModelForm):
             'group': _('group'),
         }
         widgets = {
-            'title': forms.TextInput(attrs={'placeholder': _('title')})
+            'title': forms.TextInput(attrs={'placeholder': _('title')}),
+            'group': forms.Select(attrs={'id': 'in_purchase_select_group'})
         }
 

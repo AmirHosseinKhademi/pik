@@ -1,7 +1,7 @@
-{% extends 'base.html' %} {% load static %}
-{% block title %}{{ static.page_title }}{% endblock %}
-{% block balance %}{{ static.balance }}{% endblock %}
-{% block page_header %}{{ static.page_header }}{% endblock %}
+{% extends 'base.html' %}
+{% block title %}افزودن خرید{% endblock %}
+{% block balance %}{% endblock %}
+{% block page_header %}افزودن خرید جدید{% endblock %}
 {% block content %}
     <form id="form" action="" method="POST">
         {% csrf_token %}
@@ -28,6 +28,13 @@
             </div>
         </div>
         <div class="col-md-6">
+            <div class="tp-pic-table">
+                <table class="tftable dsn" border="1" id="users_group">
+                    <tbody>
+                    <tr><th>ردیف</th><th>نام کاربر</th><th>پیک (تومان و یا درصد)</th></tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="submit-area">
                 <button type="submit" name="AddPurchase" id="submit_AddPurchase" onclick="addPurchaseMessage();">
                     اضافه کردن خرید
