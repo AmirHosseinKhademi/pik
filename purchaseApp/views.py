@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import AddPurchaseFrom
 from purchaseApp.models import Portion
 from django.db.models import Q
+from UserApp.models import CustomizedUser
 from django.contrib.auth.decorators import login_required
 
 
@@ -30,7 +31,10 @@ def add_purchases_form(request):
 def add_purchase(request):
     add_form = AddPurchaseFrom(request.POST)
     if add_form.is_valid():
-        add_form.save()
+        added_purchase = add_form.save()
+        users_portions = dict((CustomizedUser.objects.get(pk=key.split(':')[1]), int(value)) for (key, value) in request.POST.items() if key.startswith('portion'))
+        for key, value in users_portions.items():
+            Portion.objects.create_portion(user=key, purchase=added_purchase, amount=value)
         msg = 'خرید با موفقیت ایجاد شد.'
     else:
         msg = 'خطا در ثبت خرید.'
