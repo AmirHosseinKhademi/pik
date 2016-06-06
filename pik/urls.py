@@ -20,6 +20,7 @@ from UserApp import urls as user_url
 from UserApp.admin import admin_site
 from UserApp import views
 from purchaseApp import urls as purchase_url
+from AccountingApp import urls as AccountingAppUrl
 
 admin.autodiscover()
 
@@ -28,5 +29,6 @@ urlpatterns = [
     url(r'^group/', include(group_url)),
     url(r'^users/', include(user_url)),
     url(r'^purchases/', include(purchase_url)),
-    url(r'^$', views.index , name='index')
+    url(r'^$', views.index , name='index'),
+    url(r'^accounting/', include(AccountingAppUrl)),
 ]

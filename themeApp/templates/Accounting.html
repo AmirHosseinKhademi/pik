@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block title %}امور مالی | سامانه بیک{% endblock %}
+{% block balance %}12500{% endblock %}
+{% block page_header %}امور مالی{% endblock %}
+{% block content %}
+
+    <div class="col-md-6">
+        <h2>شارژ حساب</h2>
+        <form action="/charge" method="POST">
+            {% if message %}
+                <div id="msg" class="message">
+                    {{ message }}
+                </div>
+            {% endif %}
+
+            {% if charge_form.errors %}
+                {% for error in charge_form.non_field_errors %}
+                    <div class="error_message">
+                        {{ error|escape }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {% csrf_token %}
+
+            {% for item in charge_form %}
+                {% for error in item.errors %}
+                    <div class="error_message">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+                <div class="float-input">
+                    {{ item }}
+                    <span><i class="fa fa-user"></i></span>
+                </div>
+            {% endfor %}
+            <div class="submit-area">
+                <input type="submit" value="شارژ حساب">
+            </div>
+        </form>
+        <br/>
+        <ul>
+            <li>شارژ حساب به صورت آنلاین و توسط کلیه کارت های عضو شبکه شتاب امکان پذیر میباشد .</li>
+            <li>1.5% کارمزد سامانه پیک به مبلغ شما اضافه میگردد .</li>
+        </ul>
+    </div>
+
+    <div class="col-md-6">
+        <h2>درخواست تسویه</h2>
+        <form action="/checkout" method="POST">
+            {% if message %}
+                <div id="msg" class="message">
+                    {{ message }}
+                </div>
+            {% endif %}
+
+            {% if checkout_form.errors %}
+                {% for error in checkout_form.non_field_errors %}
+                    <div class="error_message">
+                        {{ error|escape }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {% csrf_token %}
+
+            {% for item in checkout_form %}
+                {% for error in item.errors %}
+                    <div class="error_message">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+                <div class="float-input">
+                    {{ item }}
+                    <span><i class="fa fa-user"></i></span>
+                </div>
+            {% endfor %}
+            <div class="submit-area">
+                <input type="submit" value="درخواست تسویه">
+            </div>
+        </form>
+        <br/>
+        <ul>
+            <li>واریزها بین 1 تا 3 ساعت پس از درخواست انجام خواهد شد .</li>
+            <li>مسئولیت صحت شماره کارت وارد شده بر عهده شما میباشد .</li>
+        </ul>
+    </div>
+
+
+    <div class="col-md-12">
+        <div class="tp-groups-table">
+            <table class="tftable" border="1">
+                <tr><th>ردیف</th><th>نوع تراکنش</th><th>مبلغ</th><th>تاریخ</th><th>خرید مربوطه</th></tr>
+                <tr><td>1</td><td>برداخت بیک</td><td>12500</td><td>17/12/95</td><td>خرید سیب زمینی !</td></tr>
+                <tr><td>1</td><td>شارژ حساب</td><td>12500</td><td>17/12/95</td><td>-</td></tr>
+                <tr><td>1</td><td>تسویه حساب</td><td>12500</td><td>17/12/95</td><td>-</td></tr>
+
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}
