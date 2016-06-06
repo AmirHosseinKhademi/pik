@@ -1,7 +1,7 @@
 from django import forms
 from .models import CustomizedUser
 from django.forms import ModelForm
-from django.forms import PasswordInput, TextInput
+from django.forms import TextInput, EmailInput
 
 class LoginForm (forms.Form):
     username = forms.CharField(max_length = 30, help_text=('Required. 30 characters or fewer. Letters, digits and '
@@ -12,7 +12,6 @@ class LoginForm (forms.Form):
 class UserForm(forms.Form):
     name = forms.CharField(max_length=60, widget=forms.TextInput(attrs={'placeholder': 'نام و نام خانوادگی'}))
     email = forms.EmailField( widget=forms.TextInput(attrs={'placeholder': 'آدرس ایمیل'}))
-    #debit_card = forms.IntegerField()
     password = forms.CharField(max_length= 20 , widget=forms.PasswordInput(attrs={'placeholder': 'گذرواژه'}))
     password_confirmation = forms.CharField(max_length= 20 , widget=forms.PasswordInput(attrs={'placeholder': 'تکرار گذرواژه'}))
 
@@ -27,8 +26,9 @@ class UserProfileForm(ModelForm):
         model = CustomizedUser
         fields = ['name', 'email', 'debit_card']
         widgets = {
-            # 'password': PasswordInput(attrs={'placeholder': '123456789'}),
-            'debit_card': TextInput()
+            'debit_card': TextInput(attrs={'placeholder': 'شماره 16 رقمی کارت اعتباری عضو شبکه شتاب'}),
+            'name' : TextInput(attrs={'placeholder': 'نام و نام خانوادگی'}),
+            'email' : EmailInput(attrs={'placeholder': 'آدرس ایمیل'}),
         }
 
 class ChangePasswordForm(forms.Form):

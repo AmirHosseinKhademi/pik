@@ -3,7 +3,6 @@
 <html lang="fa">
 <head>
 
-
     <!-- Basic Page Metatags -->
     <title>پیک ! سامانه مدیریت خرید گروهی</title>
     <meta charset="utf-8">
@@ -17,11 +16,11 @@
     <!-- End Basic Page Metatags -->
 
 
-<!-- Import CSS Files -->
-<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" media="screen"> <!-- Used for Respomsive Design -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="screen">	<!-- Main Stylesheet -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}" media="screen"> <!-- Font Icons -->
-<!-- End Import CSS Files -->
+    <!-- Import CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" media="screen"> <!-- Used for Respomsive Design -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="screen">	<!-- Main Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}" media="screen"> <!-- Font Icons -->
+    <!-- End Import CSS Files -->
 
 
 </head>
@@ -34,7 +33,7 @@
     <!-- Header -->
     <div class="pagetitle">
         <div class="col-md-6">
-<a href="index.html"><img src="{% static 'images/header.png' %}" alt="لوگوی وب سایت پیک"></a>
+            <a href="index.html"><img src="{% static 'images/header.png' %}" alt="لوگوی وب سایت پیک"></a>
         </div>
     </div>
     <!-- End Header -->
@@ -60,15 +59,16 @@
             <!-- Right Half : Login -->
             <div class="col-md-6">
                 <h2>وارد شوید</h2>
-                <div id="login-msg" class="message"></div>
                 <form id="login-form" action="/users/login" method="POST">
-                    {#                    {{login_form}}#}
                     <div class="text-fields">
                         {% csrf_token %}
 
                         {% for item in login_form %}
-                                <span class="text-danger">{{ item.errors | striptags }}</span>
-
+                            {% for error in item.errors %}
+                                <div class="error_message">
+                                    {{ item.errors | striptags }}
+                                </div>
+                            {% endfor %}
                             <div class="float-input">
                                 {{ item }}
                                 <span><i class="fa fa-user"></i></span>
@@ -87,16 +87,18 @@
             <!-- Left Half : Register -->
             <div class="col-md-6">
                 <h2>عضو شوید</h2>
-                <div id="register-msg" class="message"></div>
                 <form id="register-form" action="/users/register" method="POST">
-                    {#                    {{register_form}}#}
                     <div class="text-fields">
                         {% csrf_token %}
                         {% if message %}
-                            <span class="text-success">{{ message | striptags }}</span>
+                            <span class="message">{{ message | striptags }}</span>
                         {% endif %}
                         {% for item in register_form %}
-                            <span class="text-danger">{{ item.errors | striptags }}</span>
+                            {% for error in item.errors %}
+                                <div class="error_message">
+                                    {{ item.errors | striptags }}
+                                </div>
+                            {% endfor %}
                             <div class="float-input">
                                 {{ item }}
                                 <span><i class="fa fa-user"></i></span>
@@ -116,7 +118,7 @@
             <!-- Footer -->
             <div class="tp-footer">
                 <p>
-                    2015 &copy; کلیه حقوق مادی و معنوی این وب سایت برای دبیرخانه دومین دوره مسابقات مهارت سنجی فناورد
+                    2016 &copy; کلیه حقوق مادی و معنوی این وب سایت برای تیم توسعه تمنا محفوظ است .
                     محفوظ است .
                 </p>
             </div>
