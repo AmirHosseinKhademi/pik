@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'groupApp',
     'purchaseApp.apps.PurchaseConfig',
     'UserApp',
+    'AccountingApp',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -85,12 +86,8 @@ WSGI_APPLICATION = 'pik.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pik',
-        'HOST': 'localhost',
-        'USER': 'postgres',
-        'PASSWORD': '123qwe!',
-        'PORT': ''
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -133,3 +130,5 @@ LOCALE_PATHS = (BASE_DIR .join('/../themeApp/locale'),)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_URL = '/'
