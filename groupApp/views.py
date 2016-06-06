@@ -104,4 +104,4 @@ def get_members(request, id):
     group = Group.objects.filter(id=id)
     members = CustomizedUser.objects.filter(group__in=group)
     a = serializers.serialize('json', members)
-    return HttpResponse(a)
+    return HttpResponse(a, content_type='application/json')
