@@ -66,25 +66,8 @@
                     <div class="text-fields">
                         {% csrf_token %}
 
-
-
-{#                        {% if login_form.errors %}#}
-{#                            {% for field in login_form %}#}
-{#                                {% for error in field.errors %}#}
-{#                                    <div class="alert alert-error">#}
-{#                                        <strong>{{ error|escape }}</strong>#}
-{#                                    </div>#}
-{#                                {% endfor %}#}
-{#                            {% endfor %}#}
-{#                            {% for error in login_form.non_field_errors %}#}
-{#                                <div class="alert alert-error">#}
-{#                                    <strong>{{ error|escape }}</strong>#}
-{#                                </div>#}
-{#                            {% endfor %}#}
-{#                        {% endif %}#}
-
                         {% for item in login_form %}
-                            <span class="text-danger">{{ item.errors | striptags }}</span>
+                                <span class="text-danger">{{ item.errors | striptags }}</span>
 
                             <div class="float-input">
                                 {{ item }}
@@ -109,24 +92,9 @@
                     {#                    {{register_form}}#}
                     <div class="text-fields">
                         {% csrf_token %}
-
-
-
-{#                        {% if register_form.errors %}#}
-{#                            {% for field in register_form %}#}
-{#                                {% for error in field.errors %}#}
-{#                                    <div class="alert alert-error">#}
-{#                                        <strong>{{ error|escape }}</strong>#}
-{#                                    </div>#}
-{#                                {% endfor %}#}
-{#                            {% endfor %}#}
-{#                            {% for error in register_form.non_field_errors %}#}
-{#                                <div class="alert alert-error">#}
-{#                                    <strong>{{ error|escape }}</strong>#}
-{#                                </div>#}
-{#                            {% endfor %}#}
-{#                        {% endif %}#}
-
+                        {% if message %}
+                            <span class="text-success">{{ message | striptags }}</span>
+                        {% endif %}
                         {% for item in register_form %}
                             <span class="text-danger">{{ item.errors | striptags }}</span>
                             <div class="float-input">
