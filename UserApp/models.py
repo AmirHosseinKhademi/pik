@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.utils.translation import ugettext_lazy as _
+
 # Create your models here.
 
 class CustomUserManager(BaseUserManager):
@@ -25,6 +27,7 @@ class CustomUserManager(BaseUserManager):
         return self._create_user(email, password, True,
                                 True, **extra_fields)
 
+
 class CustomizedUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
     name = models.CharField(max_length=60, blank=False)
@@ -40,9 +43,15 @@ class CustomizedUser(AbstractBaseUser, PermissionsMixin):
     #is_superuser = models.BooleanField(('superuser status'), default=False)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
     def get_short_name(self):
         "Returns the short name for the user."
         return self.name
+
+    class Meta:
+        verbose_name = (_("مدیریت حساب کاربری کاربران"))
+        verbose_name_plural = (_("مدیریت حساب کاربری کاربران"))
+
 
 
 
