@@ -7,7 +7,7 @@ class Group(models.Model):
     title = models.CharField(max_length=255)
     admin = models.IntegerField()
     member = models.ManyToManyField(CustomizedUser, blank=True)
-    creation_datetime = models.DateTimeField(auto_now_add=True)
+    creation_datetime = models.DateTimeField(auto_now_add=True, blank=True)
 
     def __str__(self):
         return self.title
