@@ -748,3 +748,7 @@ tspan{font-family: BYekan,'BYekan',tahoma;
 .dsn {
     display:none;
 }
+
+.form-notes {
+    float: right;
+}
