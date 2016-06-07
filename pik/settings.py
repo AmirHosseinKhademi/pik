@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'groupApp',
     'purchaseApp.apps.PurchaseConfig',
     'UserApp',
+    'AccountingApp',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -133,3 +134,5 @@ LOCALE_PATHS = (BASE_DIR .join('/../themeApp/locale'),)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_URL = '/'

@@ -6,12 +6,9 @@ from .forms import LoginForm, UserForm, UserProfileForm, ChangePasswordForm
 from django.forms.utils import ErrorList
 from django.contrib.auth import password_validation
 from django.utils.translation import ugettext_lazy as _
-from django.http.response import HttpResponseRedirect
 from django.contrib.auth import update_session_auth_hash
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-
-# Create your views here.
 
 def CheckCredential(request):
     if request.user.is_authenticated():
@@ -110,17 +107,19 @@ def index(request):
     return render(request, 'index.html', {'register_form': register_form, 'login_form':login_form},context_instance=RequestContext(request))
 
 
-
 @login_required
 def user_profile(request):
     current_user = request.user
     form = UserProfileForm(request.POST or None, instance=current_user)
     if request.POST:
         if form.is_valid():
-             form.save()
-             message = "اطلاعات شما با موفقیت بروز شد .‍"
-             return render(request, 'Profile.html', {'form':form, 'message':message}, context_instance=RequestContext(request))
-
+            if len(str(form.cleaned_data['debit_card'])) == 16 or form.cleaned_data['debit_card'] is None:
+                 form.save()
+                 message = "اطلاعات شما با موفقیت بروز شد .‍"
+                 return render(request, 'Profile.html', {'form':form, 'message':message}, context_instance=RequestContext(request))
+            else:
+                errors = form._errors.setdefault("debit_card", ErrorList())
+                errors.append('شماره کارت میبایست 16 رقم باشد.')
     return render_to_response('Profile.html', {
         'form': form,
     }, context_instance=RequestContext(request))
