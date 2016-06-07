@@ -1,5 +1,5 @@
 import json
-from apt_pkg import Group
+# from .models import Group
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
