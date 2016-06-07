@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.contrib.auth import authenticate, login, get_user_model, logout
 from django.template import RequestContext
@@ -13,9 +14,10 @@ from django.contrib.auth.decorators import login_required
 def CheckCredential(request):
     if request.user.is_authenticated():
         form = UserProfileForm(request.POST or None, instance=request.user)
-        return render_to_response('Profile.html', {
-            'form': form,
-        }, context_instance=RequestContext(request))
+        return HttpResponseRedirect('profile', {'form': form })
+        # return render_to_response('Profile.html', {
+        #     'form': form,
+        # }, context_instance=RequestContext(request))
     else:
         if request.method == 'GET':
             register_form = UserForm()
@@ -35,7 +37,7 @@ def CheckCredential(request):
                         print("User is valid, active and authenticated")
                         login(request, user)
                         LoginForm.session = request.session
-                        return render(request, 'Purchases.html')
+                        return redirect('purchaseApp.list_un_payed')
                     else:
                         errors = login_form._errors.setdefault("username", ErrorList())
                         errors.append(_("حساب کاربری شما غیر فعال است. لطفا با مدیر سیستم تماس حاصل نمایید."))

@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.utils.translation import ugettext_lazy as _
+
 # Create your models here.
 
 class CustomUserManager(BaseUserManager):
@@ -25,24 +27,29 @@ class CustomUserManager(BaseUserManager):
         return self._create_user(email, password, True,
                                 True, **extra_fields)
 
+
 class CustomizedUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
-    name = models.CharField(max_length=60, blank=False)
-    balance = models.PositiveIntegerField(default=0, null=True, blank=True)
-    debit_card = models.PositiveIntegerField(null=True, blank=True)
+    name = models.CharField(max_length=60, blank=False, verbose_name='نام و نام خانوادگی')
+    balance = models.PositiveIntegerField(default=0, null=True, blank=True, verbose_name='موجودی حساب')
+    debit_card = models.PositiveIntegerField(null=True, blank=True, verbose_name='شماره کارت بانکی عضو شبکه شتاب')
     email = models.EmailField(unique=True, verbose_name='آدرس ایمیل', max_length=255)
-    is_staff = models.BooleanField(('staff status'), default=False,
-                                   help_text=('Designates whether the user can log into this admin '
-                                              'site.'))
-    is_active = models.BooleanField(('active'), default=True,
-                                    help_text=('Designates whether this user should be treated as '
-                                               'active. Unselect this instead of deleting accounts.'))
+    is_staff = models.BooleanField(verbose_name='وضعیت کاربر', default=False,
+                                   help_text=('آیا کاربر می‌تواند در سایت مدیریتی وارد شود یا خیر؟'))
+    is_active = models.BooleanField(verbose_name='فعال', default=True,
+                                    help_text=('وضعیت فعال یا غیر فعال بودن کاربر (به جای حذف حساب کاربری، این گزینه را غیر فعال کنید.)'))
     #is_superuser = models.BooleanField(('superuser status'), default=False)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
     def get_short_name(self):
         "Returns the short name for the user."
         return self.name
+
+    class Meta:
+        verbose_name = (_("مدیریت حساب کاربری کاربران"))
+        verbose_name_plural = (_("مدیریت حساب کاربری کاربران"))
+
 
 
 

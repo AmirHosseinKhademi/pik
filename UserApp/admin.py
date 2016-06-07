@@ -4,6 +4,7 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.utils.html import format_html
 from django.contrib.admin import AdminSite
 from django.contrib.auth import get_user_model
+
 # Register your models here.
 class CustomizedUserAdmin(admin.ModelAdmin):
     fields = ('name', 'email', 'password', 'balance', 'debit_card', 'is_active', 'is_staff', 'is_superuser',
@@ -15,6 +16,10 @@ class CustomizedUserAdmin(admin.ModelAdmin):
     ordering = ('name', )
     preserve_filters = False
     search_fields = ['name', 'email']
+    class Meta:
+        verbose_name = "My Model"
+        verbose_name_plural = "My Models"
+        app_label = "app"
 
     def save_model(self, request, obj, form, change):
         # Override this to set the password to the value in the field if it's

@@ -12,34 +12,60 @@
     <!-- Create Group Form -->
     <form action="" method="post">
         {% csrf_token %}
-        <div id="msg" class="message"></div>
+
+        {% if message %}
+            <div id="msg" class="message">
+                {{ message }}
+            </div>
+        {% endif %}
         <div class="text-fields">
 
 
-            <!-- Edit Groups Form List-->
-            {% if edit %}
-                {% for form in edit_group_form %}
-                    {% if not forloop.last %}
-                        {{ form }}
-                        <span><i class="fa fa-user"></i></span>
-                        <p>
-                            {% url 'edit_group' form.id.value as edit_url%}
-                            <a class="btn btn-info" href="{{ edit_url }}">ویرایش</a>
-                        </p>
-                    {% endif %}
-
+            <!-- List of Groups-->
+            {% if groups_list %}
+                {% for group in groups%}
+                    {% url 'edit_group' group.id as edit_url%}
+                    <table class="table table-bordered">
+                        <th>
+                            {% if group.admin == user.id %}
+                                <a href="{{ edit_url }}">
+                                    {{ group.title }}
+                                </a>
+                            {% else %}
+                                {{ group.title }}
+                            {% endif %}
+                        </th>
+                        <th>اعضا</th>
+                        {% for member in group.member.all %}
+                            {% if forloop.first and group.owner %}
+                                <tr>
+                                    <td></td>
+                                    <td>{{ group.owner }}</td>
+                                </tr>
+                            {% endif %}
+                            <tr>
+                                <td></td>
+                                <td>{{ member }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
                 {% endfor %}
+                {#                {% for form in edit_group_form %}#}
+                {#                    {% if not forloop.last %}#}
+                {#                        {{ form }}#}
+                {#                        <span><i class="fa fa-user"></i></span>#}
+                {#                        <p>#}
+                {#                            {% url 'edit_group' form.id.value as edit_url%}#}
+                {#                            <a class="btn btn-info" href="{{ edit_url }}">ویرایش</a>#}
+                {#                        </p>#}
+                {#                    {% endif %}#}
+                {##}
+                {#                {% endfor %}#}
             {% endif %}
 
             <!-- Edit Group Form -->
             {% if edit_group %}
                 {{ edit_group_form }}
-                {#                {% for form in edit_group_form %}#}
-                {#                    <div class="float-input ">#}
-                {#                        {{ item }}#}
-                {#                        <span><i class="fa fa-user"></i></span>#}
-                {#                    </div>#}
-                {#                {% endfor %}#}
             {% endif %}
 
             <!-- Create Group Form -->
@@ -55,13 +81,15 @@
 
             <div class="submit-area">
 
-                <button type="submit" >
-                    {% if create %}
-                        ساخت گروه
-                    {% elif edit or edit_group_form%}
-                        ذخیره
-                    {% endif %}
-                </button>
+                {% if create or edit %}
+                    <button type="submit" >
+                        {% if create %}
+                            ساخت گروه
+                        {% elif edit or edit_group_form%}
+                            ذخیره
+                        {% endif %}
+                    </button>
+                {% endif %}
             </div>
         </div>
     </form>
