@@ -47,7 +47,7 @@ class MembersAutoComplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         qs = CustomizedUser.objects.all()
         if self.q:
-            qs = qs.filter(Q(title__contains=self.q))
+            qs = qs.filter(Q(email__contains=self.q))
         return qs
 
 
