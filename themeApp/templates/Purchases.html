@@ -25,16 +25,20 @@
                         <tr><th>ردیف</th><th>نام کاربر</th><th>پیک (تومان)</th><th>وضعیت پرداخت</th></tr>
                         {% for user in portion.purchase.group.member.all %}
                             {# starting index 1 #}
-                            <tr>
-                                <td>{{ forloop.counter }}</td>
-                                <td>{{ user.name }}</td>
-                                <td>{{ portion.amount }}</td>
-                                {% if portion.status %}
-                                    <td class="tp-paied"><i class="fa fa-check-square"></i></td>
-                                {% else %}
-                                     <td class="tp-not-paied"><i class="fa fa-times-circle"></i></td>
+                            {% for user_portion in user.portion_set.all %}
+                                {% if user_portion.purchase == portion.purchase %}
+                                    <tr>
+                                        <td>{{ forloop.parentloop.counter }}</td>
+                                        <td>{{ user.name }}</td>
+                                        <td>{{ user_portion.amount }}</td>
+                                        {% if user_portion.status %}
+                                            <td class="tp-paied"><i class="fa fa-check-square"></i></td>
+                                        {% else %}
+                                             <td class="tp-not-paied"><i class="fa fa-times-circle"></i></td>
+                                        {% endif %}
+                                    </tr>
                                 {% endif %}
-                            </tr>
+                            {% endfor %}
                         {% endfor %}
                     </table>
                 </div>
