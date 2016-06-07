@@ -35,7 +35,7 @@ jQuery('#in_purchase_select_group').on('change', function () {
             html = html + '<tr>' +
                 '<td>'+ (key + 1) +'</td>' +
                 '<td class="tp-text-align-right"> '+ person.name +'</td>' +
-                '<td><input name="portions:'+ p.pk +'" id="portion_id_'+p.pk+'" type="text" placeholder="0"></td>' +
+                '<td><input name="portions:'+ p.pk +'" min="0" class="portion" id="portion_id_'+p.pk+'" type="number" placeholder="0"></td>' +
                 '</tr>';
         });
         jQuery('#users_group tr:gt(0)').remove();
@@ -46,13 +46,38 @@ jQuery('#in_purchase_select_group').on('change', function () {
     })
 })
 
-function filterByGroupId (group_id) {
+function filterByGroupId (element, group_id) {
+    var clause = undefined;
+    jQuery('.tp-filters span').removeClass('active');
+    jQuery(element).addClass('active');
     if ( group_id == undefined ) {
-        group_id = 0
+        clause = '.tp-purchase-box';
+    } else{
+        clause = '*[data-group="' + group_id + '"]'
     }
-    alert("#felbedahe")
+    jQuery('.tp-purchase-box').fadeOut(300, function () {
+        jQuery(clause).fadeIn(300);
+    });
 }
 
 function sendReciptionMailMessage( ) {
     alert("are you kidding me? :| #portavaqo")
 }
+
+jQuery('#add_purchase_form').on('submit', function () {
+    if(!jQuery('.portion').length) {
+        jQuery('#msg').text('سهم اعضای گروه باید مشخص شود. لطفا گروه را انتخاب کنید.');
+        return false;
+    }
+    var goAhead = false;
+    var sum = 0;
+    jQuery.each(jQuery('.portion'), function(key, value) {
+        if(!jQuery(value).val() || jQuery(value).val() < 0) {
+            jQuery(value).css('border','2px solid red');
+            goAhead = false
+        } else {
+            jquery(value).css('border','1px solid #eee')
+        }
+    });
+    return goAhead;
+});

@@ -3,7 +3,7 @@
 {% block balance %}{% endblock %}
 {% block page_header %}افزودن خرید جدید{% endblock %}
 {% block content %}
-    <form id="form" action="" method="POST">
+    <form id="add_purchase_form" action="" method="POST">
         {% csrf_token %}
         <div id="msg" class="message">{{ msg }}</div>
         <div class="col-md-6">
@@ -36,7 +36,7 @@
                 </table>
             </div>
             <div class="submit-area">
-                <button type="submit" name="AddPurchase" id="submit_AddPurchase" onclick="addPurchaseMessage();">
+                <button type="submit">
                     اضافه کردن خرید
                 </button>
             </div>
