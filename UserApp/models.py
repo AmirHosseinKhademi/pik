@@ -32,7 +32,7 @@ class CustomizedUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
     name = models.CharField(max_length=60, blank=False, verbose_name='نام و نام خانوادگی')
     balance = models.PositiveIntegerField(default=0, null=True, blank=True, verbose_name='موجودی حساب')
-    debit_card = models.PositiveIntegerField(null=True, blank=True, verbose_name='شماره کارت بانکی عضو شبکه شتاب')
+    debit_card = models.CharField(max_length=16, null=True, blank=True, verbose_name='شماره کارت بانکی عضو شبکه شتاب')
     email = models.EmailField(unique=True, verbose_name='آدرس ایمیل', max_length=255)
     is_staff = models.BooleanField(verbose_name='وضعیت کاربر', default=False,
                                    help_text=('آیا کاربر می‌تواند در سایت مدیریتی وارد شود یا خیر؟'))
