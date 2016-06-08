@@ -24,7 +24,10 @@ def create_group(request):
         create_form = CreateGroupForm(request.POST)
 
         if create_form.is_valid():
-            admin = request.user.id
+            admin = request.user
+            # if admin not in create_form.cleaned_data['member']:
+            #     print()
+
             create_form_obj = create_form.save(commit=False)
             create_form_obj.admin = admin
             create_form_obj.save()
@@ -48,16 +51,24 @@ class MembersAutoComplete(autocomplete.Select2QuerySetView):
 
 @login_required
 def groups_list(request):
-
     if request.method == 'GET':
-        groups = Group.objects.filter(Q(admin=request.user.id)|Q(member=request.user.id)).distinct()
+        admin_is_not_member = False
+
+        groups = Group.objects.filter(Q(admin=request.user)|Q(member=request.user)).distinct()
         for group in groups:
-            admin = CustomizedUser.objects.get(id=group.admin)
-            if admin not in group.member.all():
-                print(admin, 'not in ', group.member.all(), 'group name: ', group)
-                group.owner = admin
+            print(group.title, group.member.all())
+            # if admin not in group.member.all():
+            #     print(admin, 'not in ', group.member.all(), 'group name: ', group)
+            #     group.owner = admin
+            # if group.admin == request.user:
+            #     group.owner = True
+
+            if group.admin == request.user and group.admin not in group.member.all():
+                print(request.user not in group.member.all())
+                admin_is_not_member = True
         print(groups)
-        return render(request, 'CreateGroup.html', {'groups_list': True, 'groups': groups})
+        return render(request, 'CreateGroup.html', {'groups_list': True, 'groups': groups,
+                                                    'admin_is_not_member': admin_is_not_member})
     else:
         pass
 
@@ -67,7 +78,7 @@ def edit_group(request, id):
 
     if request.method == 'GET':
         group = Group.objects.get(id=id)
-        if not group.admin == request.user.id:
+        if not group.admin == request.user:
             return render(request, 'CreateGroup.html', {'message': 'شما اجازه دسترسی به این بخش را ندارید.'})
         edit_group_form = CreateGroupForm(instance=group)
 
@@ -79,14 +90,17 @@ def edit_group(request, id):
 
         if edit_group_form.is_valid():
             edit_group_form.save()
-            return redirect(reverse('edit-groups'))
+        return redirect(reverse('groups-list'))
 
-    return HttpResponse('ok')
+    return redirect(reverse('groups-list'))
 
 
 @login_required
 def get_members(request, id):
     group = Group.objects.filter(id=id)
-    members = CustomizedUser.objects.filter(group__in=group)
+
+    # members = CustomizedUser.objects.filter(group__in=group)
+    members = CustomizedUser.objects.filter(group_member__in=group)
+    # print(group.all())
     a = serializers.serialize('json', members)
     return HttpResponse(a, content_type='application/json')

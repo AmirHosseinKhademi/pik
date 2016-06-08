@@ -25,9 +25,9 @@
             {% if groups_list %}
                 {% for group in groups%}
                     {% url 'edit_group' group.id as edit_url%}
-                    <table class="table table-bordered">
-                        <th>
-                            {% if group.admin == user.id %}
+                    <table class="table table-bordered" style="text-align: center;">
+                        <th style="text-align: center">
+                            {% if group.admin == user %}
                                 <a href="{{ edit_url }}">
                                     {{ group.title }}
                                 </a>
@@ -35,17 +35,16 @@
                                 {{ group.title }}
                             {% endif %}
                         </th>
-                        <th>اعضا</th>
                         {% for member in group.member.all %}
-                            {% if forloop.first and group.owner %}
-                                <tr>
-                                    <td></td>
-                                    <td>{{ group.owner }}</td>
-                                </tr>
-                            {% endif %}
                             <tr>
-                                <td></td>
-                                <td>{{ member }}</td>
+                                {% if  group.admin not in group.member.all and forloop.first %}
+                                    <td>{{ group.admin }}</td>
+                                    <tr>
+                                        <td>{{ member }}</td>
+                                    </tr>
+                                {% else %}
+                                    <td>{{ member }}</td>
+                                {% endif %}
                             </tr>
                         {% endfor %}
                     </table>
@@ -81,11 +80,11 @@
 
             <div class="submit-area">
 
-                {% if create or edit %}
+                {% if create or edit_group %}
                     <button type="submit" >
                         {% if create %}
                             ساخت گروه
-                        {% elif edit or edit_group_form%}
+                        {% elif edit_group %}
                             ذخیره
                         {% endif %}
                     </button>
