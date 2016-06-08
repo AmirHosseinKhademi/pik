@@ -22,7 +22,7 @@ def list_payed_purchases(request):
 def add_purchases_form(request):
     if request.method == 'POST':
         return add_purchase(request)
-    add_form = AddPurchaseFrom()
+    add_form = AddPurchaseFrom(group_admin=request.user.pk)
     return render(request, 'AddPurchase.html',
                   {'add_form': add_form})
 
