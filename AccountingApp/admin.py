@@ -5,7 +5,7 @@ from .models import AccountingModel
 
 class AccountingAdmin(admin.ModelAdmin):
     fields = ('amount', 'user', 'action', 'portion')
-    list_display = ( 'user_name', 'amount', 'action', 'portion', 'date')
+    list_display = ('user_name', 'amount', 'action', 'portion', 'date')
     list_display_links = ('user_name', )
     list_filter = ('user', )
     ordering = ('user', )
