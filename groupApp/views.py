@@ -67,7 +67,7 @@ def groups_list(request):
                 print(request.user not in group.member.all())
                 admin_is_not_member = True
         print(groups)
-        return render(request, 'CreateGroup.html', {'groups_list': True, 'groups': groups,
+        return render(request, 'Groups.html', {'groups_list': True, 'groups': groups,
                                                     'admin_is_not_member': admin_is_not_member})
     else:
         pass
