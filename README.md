@@ -1,3 +1,2 @@
 # pik
-Pik Online System
-changes
+Group Purchasing Manager
